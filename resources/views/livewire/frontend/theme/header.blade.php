@@ -31,7 +31,7 @@
                     <div class="header-left">
                         <div class="logo">
                             <a href="index.html" class="header-logo">
-                                <img src="{{ url('assets/frontend/img/logo/black-logo.svg') }}" alt="logo-img">
+                                <img src="{{ url('assets/frontend/img/logo/aventro.png') }}" alt="logo-img">
                             </a>
                         </div>
                     </div>

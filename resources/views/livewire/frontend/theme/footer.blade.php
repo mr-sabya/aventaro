@@ -16,7 +16,7 @@
                     <div class="footer-widget-items">
                         <div class="widget-title">
                             <a href="index.html" class="footer-logo">
-                                <img src="{{ url('assets/frontend/img/logo/black-logo.svg') }}" alt="img">
+                                <img src="{{ url('assets/frontend/img/logo/aventro.png') }}" alt="img">
                             </a>
                         </div>
                         <div class="footer-content">
