@@ -59,9 +59,7 @@
                     <li class="app-divider-v dotted py-1"></li>
 
                     <li class="dropdown-item">
-                        <a class="mb-0 text-danger" href="./sign_in.html" target="_blank">
-                            <i class="ph-duotone  ph-sign-out pe-1 f-s-20"></i> Log Out
-                        </a>
+                        <livewire:backend.auth.logout />
                     </li>
                 </ul>
             </div>
@@ -73,19 +71,13 @@
             <li class="menu-title">
                 <span>Dashboard</span>
             </li>
-            <li>
-                <a aria-expanded="false" data-bs-toggle="collapse" href="#dashboard" class="show">
+            <li class="no-sub active">
+                <a href="{{ route('admin.dashboard') }}" wire:navigate>
                     <svg stroke="currentColor" stroke-width="1.5">
                         <use xlink:href="{{ url('assets/backend/svg/_sprite.svg#home') }}"></use>
                     </svg>
                     dashboard
-                    <span class="badge bg-danger  badge-dashboard badge-notification ms-2">New</span>
-
                 </a>
-                <ul class="collapse show" id="dashboard">
-                    <li class="active"><a href="index.html">Ecommerce</a></li>
-                    <li><a href="project_dashboard.html">Project</a></li>
-                </ul>
             </li>
             <li>
                 <a aria-expanded="false" data-bs-toggle="collapse" href="#apps">

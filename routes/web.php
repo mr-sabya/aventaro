@@ -14,9 +14,3 @@ Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/about-us', [PageController::class, 'aboutPage'])->name('pages.about');
 Route::get('/conatct-us', [PageController::class, 'contactPage'])->name('pages.conatct');
 
-// admin route group
-Route::prefix('admin')->name('admin.')->group(function () {
-    // dahboard
-    Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('home');
-    // Add your admin routes here
-});
