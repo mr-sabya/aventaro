@@ -17,7 +17,7 @@
 <livewire:frontend.components.tour-section />
 
 <!-- Tour-descover-section Start -->
-<livewire:frontend.components.tour-discover-section />
+<livewire:frontend.components.discover-section />
 
 <!--  Marquee Section Start -->
 <div class="marquee-section fix section-padding pt-0">

@@ -10369,21 +10369,7 @@ p {
   z-index: 9;
 }
 
-.testimonial-box-items-4::before {
-  position: absolute;
-  top: 45px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  content: "";
-  border-radius: 28px;
-  background: var(--white);
-  -webkit-box-shadow: 10px 9px 106.6px 55px rgba(5, 6, 60, 0.04);
-          box-shadow: 10px 9px 106.6px 55px rgba(5, 6, 60, 0.04);
-  z-index: -1;
-  width: 100%;
-  height: initial;
-}
+
 
 .testimonial-box-items-4 .star {
   color: var(--theme-color-2);
