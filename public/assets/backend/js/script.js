@@ -47,10 +47,12 @@ function setUpHorizontalHeader() {
     }
     $(".horizontal-sidebar .show").removeClass("show");
 }
+
 document.addEventListener('livewire:navigated', () => {
 
     $(document).on('click', '.menu-previous', function (e) {
-        let layoutOption = getLocalStorageItem("layout-option", "ltr");
+        // Removed getLocalStorageItem, defaulting to 'ltr'
+        let layoutOption = "ltr";
         let attribute = (layoutOption == 'ltr' || layoutOption == 'box-layout') ? 'marginLeft' : 'marginRight';
         let currentPosition = parseInt(navBar.css(attribute));
         if (currentPosition < 0) {
@@ -64,7 +66,8 @@ document.addEventListener('livewire:navigated', () => {
     })
 
     $(document).on('click', '.menu-next', function (e) {
-        let layoutOption = getLocalStorageItem("layout-option", "ltr");
+        // Removed getLocalStorageItem, defaulting to 'ltr'
+        let layoutOption = "ltr";
         let attribute = (layoutOption == 'ltr' || layoutOption == 'box-layout') ? 'marginLeft' : 'marginRight';
         let currentPosition = parseInt(navBar.css(attribute));
         if (currentPosition >= maxNavbarLimit) {
@@ -79,7 +82,8 @@ document.addEventListener('livewire:navigated', () => {
 
     $(function () {
         setUpHorizontalHeader();
-        let themeMode = getLocalStorageItem('theme-mode', 'light')
+        // Removed getLocalStorageItem, defaulting to 'light'
+        let themeMode = 'light';
         setTimeout(() => {
             $('body').addClass(`${themeMode}`)
         }, 1500);
@@ -113,9 +117,6 @@ document.addEventListener('livewire:navigated', () => {
         console.timeEnd('time2');
     }
 
-
-
-    
 
     // >>-- 05 List page js --<<
     const $window = $(window);
@@ -171,6 +172,7 @@ document.addEventListener('livewire:navigated', () => {
             }
         });
     });
+
     // >>-- 07 Loader JS --<<
     $('.loader-wrapper').fadeOut('slow', function () {
         $(this).remove();
@@ -263,13 +265,15 @@ document.addEventListener('livewire:navigated', () => {
             const isDark = document.body.classList.contains("dark");
             document.body.classList.toggle("dark", !isDark);
             document.body.classList.toggle("light", isDark);
-            setLocalStorageItem('theme-mode', isDark ? 'light' : 'dark');
+            // Removed setLocalStorageItem
         });
     }
+
     function appendHtml() {
         let div = document.getElementsByClassName('app-wrapper');
         div.innerHTML += '<p>This is some HTML code</p>';
     }
+
     window.onload = function () {
         appendHtml();
     }
@@ -327,6 +331,7 @@ document.addEventListener('livewire:navigated', () => {
             if (ariaExpand) ariaExpand.setAttribute('aria-expanded', 'true');
         });
     });
+
     // >>-- 15  Modal js --<<
 
     $(function () {

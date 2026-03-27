@@ -1,0 +1,42 @@
+.app-content {
+    min-height: 100vh;
+}
+
+.main-nav li.no-sub.active a {
+    color: rgba(var(--white), 1) !important;
+    background: rgba(var(--primary), 1);
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem;
+}
+
+
+.image-preview-upload {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    background: #f8f9fa;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.image-preview-upload:hover {
+    border-color: #0d6efd;
+}
+
+.preview-img {
+    max-height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sort-icon {
+    font-size: 0.8rem;
+    margin-left: 5px;
+    color: #ccc;
+}
+
+.sort-active {
+    color: #000 !important;
+}

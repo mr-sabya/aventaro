@@ -14,13 +14,10 @@ return new class extends Migration
         Schema::create('destination_faq', function (Blueprint $table) {
             $table->id();
             $table->foreignId('destination_id')->constrained()->onDelete('cascade');
-
-            // Foreign key for the DestinationFaq model
-            // Laravel correctly infers the table name 'destination_faqs' and 'id' column
             $table->foreignId('destination_faq_id')->constrained('destination_faqs')->onDelete('cascade');
 
-            // Set the primary key to be a combination of the two IDs
-            $table->primary(['destination_id', 'destination_faq_id']);
+            // Prevents duplicate rows for the same destination/faq pair
+            $table->unique(['destination_id', 'destination_faq_id']);
             $table->timestamps();
         });
     }

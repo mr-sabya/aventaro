@@ -29,8 +29,6 @@
     <!-- tabler icons-->
     <link href="{{ asset('assets/backend/vendor/tabler-icons/tabler-icons.css') }}" rel="stylesheet" type="text/css">
 
-    <!-- apexcharts css-->
-    <link href="{{ asset('assets/backend/vendor/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css">
 
     <!-- glight css -->
     <link href="{{ asset('assets/backend/vendor/glightbox/glightbox.min.css') }}" rel="stylesheet">
@@ -46,6 +44,9 @@
 
     <!-- Responsive css-->
     <link href="{{ asset('assets/backend/css/responsive.css') }}" rel="stylesheet" type="text/css">
+
+    <!-- custom css-->
+    <link href="{{ asset('assets/backend/css/custom.css') }}" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -90,8 +91,6 @@
 
     <!-- modal -->
 
-    <!--customizer-->
-    <div id="customizer"></div>
 
     <!-- latest jquery-->
     <script data-navigate-once src="{{ asset('assets/backend/js/jquery-3.6.3.min.js') }}"></script>
@@ -108,22 +107,10 @@
     <!-- Glight js -->
     <script data-navigate-once src="{{ asset('assets/backend/vendor/glightbox/glightbox.min.js') }}"></script>
 
-    <!-- apexcharts-->
-    <script data-navigate-once src="{{ asset('assets/backend/vendor/apexcharts/apexcharts.min.js') }}"></script>
-
     <script data-navigate-once>
         /* Theme name prepend to localStorage key */
         const themeName = "ki-admin";
 
-        /* Get item from localStorage */
-        function getLocalStorageItem(key, defaultValue = null) {
-            return localStorage.getItem(`${themeName}-${key}`) ?? defaultValue;
-        }
-
-        /* Set item in localStorage */
-        function setLocalStorageItem(key, value) {
-            localStorage.setItem(`${themeName}-${key}`, value);
-        }
 
         // >>-- 04 Sidebar toggle js --<<
         $(document).on('click', '.header-toggle', function() {
@@ -134,14 +121,9 @@
         });
     </script>
 
-    <!-- Ecommerce js-->
-    <script data-navigate-once src="{{ asset('assets/backend/js/ecommerce_dashboard.js') }}"></script>
 
     <!-- App js-->
     <script data-navigate-once src="{{ asset('assets/backend/js/script.js') }}"></script>
-
-    <!-- Customizer js-->
-    <script data-navigate-once src="{{ asset('assets/backend/js/customizer.js') }}"></script>
 
 </body>
 
