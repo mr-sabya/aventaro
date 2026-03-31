@@ -7,7 +7,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 
-class AboutManager extends Component
+class Index extends Component
 {
     use WithFileUploads;
 
@@ -81,6 +81,6 @@ class AboutManager extends Component
 
     public function render()
     {
-        return view('livewire.backend.about.about-manager');
+        return view('livewire.backend.about.index');
     }
 }

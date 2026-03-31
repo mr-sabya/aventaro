@@ -90,6 +90,9 @@
                     <li><a href="{{ route('admin.website.slider.index') }}" wire:navigate>Hero Slider</a></li>
                     <!-- about section   -->
                     <li><a href="{{ route('admin.website.about-section.index') }}" wire:navigate>About Section</a></li>
+                    <!-- partner -->
+                    <li><a href="{{ route('admin.website.partner.index') }}" wire:navigate>Partners</a></li>
+                    
                     <li class="another-level">
                         <a aria-expanded="false" data-bs-toggle="collapse" href="#Profile-page">
                             Profile

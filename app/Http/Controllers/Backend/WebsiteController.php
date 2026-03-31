@@ -18,4 +18,10 @@ class WebsiteController extends Controller
     {
         return view('backend.about-section.index');
     }
+
+    // partner
+    public function partner()
+    {
+        return view('backend.partner.index');
+    }
 }

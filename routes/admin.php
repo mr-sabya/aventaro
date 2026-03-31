@@ -14,6 +14,9 @@ Route::middleware(['isAdmin'])->group(function () {
 
         // about section
         Route::get('about-section', [App\Http\Controllers\Backend\WebsiteController::class, 'aboutSection'])->name('about-section.index');
+
+        // partner
+        Route::get('partners', [App\Http\Controllers\Backend\WebsiteController::class, 'partner'])->name('partner.index');
     });
 
     // location
