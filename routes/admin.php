@@ -19,5 +19,11 @@ Route::middleware(['isAdmin'])->group(function () {
         Route::get('city', [App\Http\Controllers\Backend\LocationController::class, 'city'])->name('city.index');
     });
 
+    // settings
+    Route::prefix('settings')->name('settings.')->group(function () {
+        Route::get('currency', [App\Http\Controllers\Backend\SettingController::class, 'currency'])->name('currency.index');
+        Route::get('language', [App\Http\Controllers\Backend\SettingController::class, 'language'])->name('language.index');
+    });
+
 
 });

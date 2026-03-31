@@ -110,7 +110,7 @@
 
     <!-- Modal Form -->
     <div wire:ignore.self class="modal fade" id="cityModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog">
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header border-bottom-0">
                     <h5 class="modal-title fw-bold">{{ $isEditMode ? 'Edit City' : 'Create New City' }}</h5>

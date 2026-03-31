@@ -112,6 +112,21 @@
                     <li><a href="{{ route('admin.location.city.index') }}" wire:navigate>City</a></li>                    
                 </ul>
             </li>
+
+            <!-- Settings -->
+            <li>
+                <a aria-expanded="false" data-bs-toggle="collapse" href="#settings">
+                    <svg stroke="currentColor" stroke-width="1.5">
+                        <use xlink:href="{{ url('assets/backend/svg/_sprite.svg#stack') }}"></use>
+                    </svg>
+                    Settings
+                </a>
+                <ul class="collapse" id="settings">
+                    <li><a href="{{ route('admin.settings.currency.index') }}" wire:navigate>Currency</a></li>
+                    <li><a href="{{ route('admin.settings.language.index') }}" wire:navigate>Language</a></li>
+                </ul>
+            </li>
+
             <li class="no-sub">
                 <a href="widget.html">
                     <svg stroke="currentColor" stroke-width="1.5">
