@@ -11,6 +11,9 @@ Route::middleware(['isAdmin'])->group(function () {
     // hero-slider
     Route::prefix('website')->name('website.')->group(function () {
         Route::get('hero-slider', [App\Http\Controllers\Backend\WebsiteController::class, 'heroSlider'])->name('slider.index');
+
+        // about section
+        Route::get('about-section', [App\Http\Controllers\Backend\WebsiteController::class, 'aboutSection'])->name('about-section.index');
     });
 
     // location

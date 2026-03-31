@@ -12,4 +12,10 @@ class WebsiteController extends Controller
     {
         return view('backend.slider.index');
     }
+
+    // about section
+    public function aboutSection()
+    {
+        return view('backend.about-section.index');
+    }
 }

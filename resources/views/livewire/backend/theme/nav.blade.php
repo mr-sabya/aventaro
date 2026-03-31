@@ -88,6 +88,8 @@
                 </a>
                 <ul class="collapse" id="apps">
                     <li><a href="{{ route('admin.website.slider.index') }}" wire:navigate>Hero Slider</a></li>
+                    <!-- about section   -->
+                    <li><a href="{{ route('admin.website.about-section.index') }}" wire:navigate>About Section</a></li>
                     <li class="another-level">
                         <a aria-expanded="false" data-bs-toggle="collapse" href="#Profile-page">
                             Profile
@@ -97,7 +99,7 @@
                             <li><a href="setting.html">Setting</a></li>
                         </ul>
                     </li>
-                    
+
                 </ul>
             </li>
             <li>
@@ -109,7 +111,7 @@
                 </a>
                 <ul class="collapse" id="location">
                     <li><a href="{{ route('admin.location.country.index') }}" wire:navigate>Country</a></li>
-                    <li><a href="{{ route('admin.location.city.index') }}" wire:navigate>City</a></li>                    
+                    <li><a href="{{ route('admin.location.city.index') }}" wire:navigate>City</a></li>
                 </ul>
             </li>
 
