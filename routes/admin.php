@@ -25,5 +25,9 @@ Route::middleware(['isAdmin'])->group(function () {
         Route::get('language', [App\Http\Controllers\Backend\SettingController::class, 'language'])->name('language.index');
     });
 
-
+    // destinations
+    Route::prefix('destinations')->name('destinations.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Backend\DestinationController::class, 'index'])->name('index');
+        Route::get('/faq', [App\Http\Controllers\Backend\DestinationController::class, 'faq'])->name('faq');
+    });
 });

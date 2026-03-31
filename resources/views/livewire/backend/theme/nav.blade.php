@@ -127,6 +127,20 @@
                 </ul>
             </li>
 
+            <!-- Destinations -->
+            <li>
+                <a aria-expanded="false" data-bs-toggle="collapse" href="#destinations">
+                    <svg stroke="currentColor" stroke-width="1.5">
+                        <use xlink:href="{{ url('assets/backend/svg/_sprite.svg#stack') }}"></use>
+                    </svg>
+                    Destinations
+                </a>
+                <ul class="collapse" id="destinations">
+                    <li><a href="{{ route('admin.destinations.index') }}" wire:navigate>Index</a></li>
+                    <li><a href="{{ route('admin.destinations.faq') }}" wire:navigate>FAQ</a></li>
+                </ul>
+            </li>
+
             <li class="no-sub">
                 <a href="widget.html">
                     <svg stroke="currentColor" stroke-width="1.5">

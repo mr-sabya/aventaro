@@ -1,88 +1,86 @@
 <div>
 
-    <div class="">
-        <div class="card shadow-sm">
-            <div class="card-header bg-white d-flex justify-content-between align-items-center">
-                <div>
-                    <h5 class="mb-0">Hero Slides Management</h5>
-                    <small class="text-muted">Manage hero slider for website hero section</small>
-                </div>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#slideModal" wire:click="resetFields">
-                    <i class="bi bi-plus-lg"></i> Add New Slide
-                </button>
+    <div class="card shadow-sm">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+            <div>
+                <h5 class="mb-0">Hero Slides Management</h5>
+                <small class="text-muted">Manage hero slider for website hero section</small>
             </div>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#slideModal" wire:click="resetFields">
+                <i class="bi bi-plus-lg"></i> Add New Slide
+            </button>
+        </div>
 
-            <div class="card-body">
-                @if (session()->has('message'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('message') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-                @endif
+        <div class="card-body">
+            @if (session()->has('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('message') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            @endif
 
-                <div class="row mb-3">
-                    <div class="col-md-2">
-                        <div class="input-group">
-                            <span class="input-group-text bg-light text-muted small">Show</span>
-                            <select wire:model.live="perPage" class="form-select">
-                                <option value="10">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6"></div>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Search slides..." wire:model.live.debounce.300ms="search">
+            <div class="row mb-3">
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-text bg-light text-muted small">Show</span>
+                        <select wire:model.live="perPage" class="form-select">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                        </select>
                     </div>
                 </div>
-
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle">
-                        <thead class="table-light">
-                            <tr>
-                                <th style="cursor:pointer" wire:click="sortBy('order')">
-                                    Order <span class="sort-icon {{ $sortField === 'order' ? 'sort-active' : '' }}">▲▼</span>
-                                </th>
-                                <th>Image</th>
-                                <th style="cursor:pointer" wire:click="sortBy('title_part_1')">
-                                    Title <span class="sort-icon {{ $sortField === 'title_part_1' ? 'sort-active' : '' }}">▲▼</span>
-                                </th>
-                                <th>Status</th>
-                                <th class="text-end">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($slides as $slide)
-                            <tr>
-                                <td><span class="badge bg-secondary">{{ $slide->order }}</span></td>
-                                <td>
-                                    <img src="{{ asset('storage/' . $slide->background_image) }}" class="rounded" width="80" alt="slide">
-                                </td>
-                                <td>
-                                    <strong>{{ $slide->title_part_1 }}</strong><br>
-                                    <small class="text-muted">{{ $slide->subtitle }}</small>
-                                </td>
-                                <td>
-                                    <span class="badge {{ $slide->is_active ? 'bg-success' : 'bg-danger' }}">
-                                        {{ $slide->is_active ? 'Active' : 'Inactive' }}
-                                    </span>
-                                </td>
-                                <td class="text-end">
-                                    <button wire:click="edit({{ $slide->id }})" class="btn btn-sm btn-outline-primary">Edit</button>
-                                    <button onclick="confirm('Are you sure?') || event.stopImmediatePropagation()" wire:click="delete({{ $slide->id }})" class="btn btn-sm btn-outline-danger">Delete</button>
-                                </td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="5" class="text-center text-muted">No slides found.</td>
-                            </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                <div class="col-md-6"></div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Search slides..." wire:model.live.debounce.300ms="search">
                 </div>
-                {{ $slides->links() }}
             </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="cursor:pointer" wire:click="sortBy('order')">
+                                Order <span class="sort-icon {{ $sortField === 'order' ? 'sort-active' : '' }}">▲▼</span>
+                            </th>
+                            <th>Image</th>
+                            <th style="cursor:pointer" wire:click="sortBy('title_part_1')">
+                                Title <span class="sort-icon {{ $sortField === 'title_part_1' ? 'sort-active' : '' }}">▲▼</span>
+                            </th>
+                            <th>Status</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($slides as $slide)
+                        <tr>
+                            <td><span class="badge bg-secondary">{{ $slide->order }}</span></td>
+                            <td>
+                                <img src="{{ asset('storage/' . $slide->background_image) }}" class="rounded" width="80" alt="slide">
+                            </td>
+                            <td>
+                                <strong>{{ $slide->title_part_1 }}</strong><br>
+                                <small class="text-muted">{{ $slide->subtitle }}</small>
+                            </td>
+                            <td>
+                                <span class="badge {{ $slide->is_active ? 'bg-success' : 'bg-danger' }}">
+                                    {{ $slide->is_active ? 'Active' : 'Inactive' }}
+                                </span>
+                            </td>
+                            <td class="text-end">
+                                <button wire:click="edit({{ $slide->id }})" class="btn btn-sm btn-outline-primary">Edit</button>
+                                <button onclick="confirm('Are you sure?') || event.stopImmediatePropagation()" wire:click="delete({{ $slide->id }})" class="btn btn-sm btn-outline-danger">Delete</button>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">No slides found.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+            {{ $slides->links() }}
         </div>
     </div>
 
@@ -99,15 +97,19 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <label class="form-label">Background Image</label>
-                                <div class="image-preview-upload" onclick="document.getElementById('fileUpload').click()">
+                                <div class="image-upload-wrapper" onclick="document.getElementById('fileUpload').click()">
                                     @if ($background_image)
-                                    <img src="{{ $background_image->temporaryUrl() }}" class="preview-img">
+                                    <div class="preview-img-container">
+                                        <img src="{{ $background_image->temporaryUrl() }}" class="preview-img">
+                                    </div>
                                     @elseif($oldImage)
-                                    <img src="{{ asset('storage/' . $oldImage) }}" class="preview-img">
+                                    <div class="preview-img-container">
+                                        <img src="{{ asset('storage/' . $oldImage) }}" class="preview-img">
+                                    </div>
                                     @else
                                     <div class="py-4 text-muted">
-                                        <i class="bi bi-cloud-arrow-up fs-1"></i>
-                                        <p>Click to upload background image</p>
+                                        <i class="bi bi-cloud-arrow-up fs-1 text-primary"></i>
+                                        <p class="mb-0 small text-muted">Click to select image</p>
                                     </div>
                                     @endif
                                     <input type="file" id="fileUpload" wire:model="background_image" class="d-none">
