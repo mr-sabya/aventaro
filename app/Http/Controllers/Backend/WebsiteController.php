@@ -36,4 +36,16 @@ class WebsiteController extends Controller
     {
         return view('backend.trending-section.index');
     }
+
+    // feature-section
+    public function featureSection()
+    {
+        return view('backend.feature-section.index');
+    }
+
+    // discover-section
+    public function discoverSection()
+    {
+        return view('backend.discover-section.index');
+    }
 }

@@ -4,15 +4,22 @@
             <div class="col-md-8 mx-auto">
                 <div class="card shadow-sm border-0">
                     <div class="card-header bg-white py-3">
-                        <h5 class="mb-0 fw-bold"><i class="bi bi-tag me-2 text-primary"></i>Brand Section Management</h5>
-                        <small class="text-muted">This text usually appears as a heading or description above the partner logo slider.</small>
+                        <div class="d-flex align-items-center">
+                            <div class="rounded-circle bg-primary bg-opacity-10 p-2 me-3 w-45 h-45 d-flex-center">
+                                <i class="ri-layout-grid-line fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0 fw-bold text-dark">Brand Section</h5>
+                                <small class="text-muted">This text usually appears as a heading or description above the partner logo slider.</small>
+                            </div>
+                        </div>
                     </div>
 
                     <form wire:submit.prevent="save">
                         <div class="card-body">
                             @if (session()->has('message'))
                             <div class="alert alert-success border-0 shadow-sm alert-dismissible fade show" role="alert">
-                                <i class="bi bi-check-circle me-2"></i> {{ session('message') }}
+                                <i class="ri-checkbox-circle-line me-2"></i> {{ session('message') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             </div>
                             @endif

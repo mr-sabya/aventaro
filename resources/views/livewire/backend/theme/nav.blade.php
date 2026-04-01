@@ -96,7 +96,10 @@
                     <li><a href="{{ route('admin.website.brand-section.index') }}" wire:navigate>Brand Section</a></li>
                     <!-- trending destination section -->
                     <li><a href="{{ route('admin.website.trending-section.index') }}" wire:navigate>Trending Section</a></li>
-
+                    <!-- feature section -->
+                    <li><a href="{{ route('admin.website.feature-section.index') }}" wire:navigate>Feature Section</a></li>
+                    <!-- discover section -->
+                    <li><a href="{{ route('admin.website.discover-section.index') }}" wire:navigate>Discover Section</a></li>
                 </ul>
             </li>
             <li>

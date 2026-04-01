@@ -23,6 +23,12 @@ Route::middleware(['isAdmin'])->group(function () {
 
         // trending destination section
         Route::get('trending-destination-section', [App\Http\Controllers\Backend\WebsiteController::class, 'trendingDestinationSection'])->name('trending-section.index');
+
+        // feature-section  
+        Route::get('feature-section', [App\Http\Controllers\Backend\WebsiteController::class, 'featureSection'])->name('feature-section.index');
+
+        // discover-section
+        Route::get('discover-section', [App\Http\Controllers\Backend\WebsiteController::class, 'discoverSection'])->name('discover-section.index');
     });
 
     // location

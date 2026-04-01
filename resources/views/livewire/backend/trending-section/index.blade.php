@@ -4,10 +4,16 @@
             <div class="col-md-8 mx-auto">
                 <div class="card shadow-sm border-0">
                     <div class="card-header bg-white py-3">
-                        <h5 class="mb-0 fw-bold text-dark">
-                            <i class="bi bi-fire me-2 text-danger"></i>Trending Section Settings
-                        </h5>
-                        <small class="text-muted">Manage the header content for the trending destinations area.</small>
+
+                        <div class="d-flex align-items-center">
+                            <div class="rounded-circle bg-danger bg-opacity-10 p-2 me-3 w-45 h-45 d-flex-center">
+                                <i class="ri-fire-line fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0 fw-bold text-dark">Trending Section Settings</h5>
+                                <small class="text-muted">Manage the header content for the trending destinations area.</small>
+                            </div>
+                        </div>
                     </div>
 
                     <form wire:submit.prevent="save">
