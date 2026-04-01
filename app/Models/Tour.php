@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -54,6 +55,24 @@ class Tour extends Model
     | Relationships
     |--------------------------------------------------------------------------
     */
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Handle slug on creation
+        static::creating(function ($tour) {
+            if (empty($tour->slug)) {
+                $tour->slug = Str::slug($tour->title);
+            }
+        });
+
+        // Handle slug on update (if title changes)
+        static::updating(function ($tour) {
+            $tour->slug = Str::slug($tour->title);
+        });
+    }
 
     /**
      * Get the city where the tour is located.

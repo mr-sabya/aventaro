@@ -29,6 +29,11 @@
     <!-- tabler icons-->
     <link href="{{ asset('assets/backend/vendor/tabler-icons/tabler-icons.css') }}" rel="stylesheet" type="text/css">
 
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/font-awesome.css') }}">
 
     <!-- glight css -->
     <link href="{{ asset('assets/backend/vendor/glightbox/glightbox.min.css') }}" rel="stylesheet">

@@ -42,4 +42,11 @@ Route::middleware(['isAdmin'])->group(function () {
         Route::get('/', [App\Http\Controllers\Backend\DestinationController::class, 'index'])->name('index');
         Route::get('/faq', [App\Http\Controllers\Backend\DestinationController::class, 'faq'])->name('faq');
     });
+
+    // tours
+    Route::prefix('tours')->name('tours.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Backend\TourController::class, 'index'])->name('index');
+        Route::get('/amenities', [App\Http\Controllers\Backend\TourController::class, 'amenities'])->name('amenities');
+        Route::get('/plans/{id}', [App\Http\Controllers\Backend\TourController::class, 'plans'])->name('plans');
+    });
 });

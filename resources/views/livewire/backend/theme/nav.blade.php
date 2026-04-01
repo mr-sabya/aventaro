@@ -97,16 +97,6 @@
                     <!-- trending destination section -->
                     <li><a href="{{ route('admin.website.trending-section.index') }}" wire:navigate>Trending Section</a></li>
 
-                    <li class="another-level">
-                        <a aria-expanded="false" data-bs-toggle="collapse" href="#Profile-page">
-                            Profile
-                        </a>
-                        <ul class="collapse" id="Profile-page">
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="setting.html">Setting</a></li>
-                        </ul>
-                    </li>
-
                 </ul>
             </li>
             <li>
@@ -147,6 +137,20 @@
                 <ul class="collapse" id="destinations">
                     <li><a href="{{ route('admin.destinations.index') }}" wire:navigate>Index</a></li>
                     <li><a href="{{ route('admin.destinations.faq') }}" wire:navigate>FAQ</a></li>
+                </ul>
+            </li>
+
+            <!-- tours -->
+            <li>
+                <a aria-expanded="false" data-bs-toggle="collapse" href="#tours">
+                    <svg stroke="currentColor" stroke-width="1.5">
+                        <use xlink:href="{{ url('assets/backend/svg/_sprite.svg#stack') }}"></use>
+                    </svg>
+                    Tours
+                </a>
+                <ul class="collapse" id="tours">
+                    <li><a href="{{ route('admin.tours.index') }}" wire:navigate>Index</a></li>
+                    <li><a href="{{ route('admin.tours.amenities') }}" wire:navigate>Amenities</a></li>
                 </ul>
             </li>
 
