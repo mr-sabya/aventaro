@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Backend\About;
+namespace App\Livewire\Backend\AboutSection;
 
 use App\Models\AboutSection;
 use Livewire\Component;
@@ -81,6 +81,6 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.backend.about.index');
+        return view('livewire.backend.about-section.index');
     }
 }

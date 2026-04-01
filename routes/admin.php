@@ -17,6 +17,12 @@ Route::middleware(['isAdmin'])->group(function () {
 
         // partner
         Route::get('partners', [App\Http\Controllers\Backend\WebsiteController::class, 'partner'])->name('partner.index');
+
+        // brand section
+        Route::get('brand-section', [App\Http\Controllers\Backend\WebsiteController::class, 'brandSection'])->name('brand-section.index');
+
+        // trending destination section
+        Route::get('trending-destination-section', [App\Http\Controllers\Backend\WebsiteController::class, 'trendingDestinationSection'])->name('trending-section.index');
     });
 
     // location

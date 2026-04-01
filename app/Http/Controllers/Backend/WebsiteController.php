@@ -24,4 +24,16 @@ class WebsiteController extends Controller
     {
         return view('backend.partner.index');
     }
+
+    // brand section
+    public function brandSection()
+    {
+        return view('backend.brand-section.index');
+    }
+
+    // trending destination section
+    public function trendingDestinationSection()
+    {
+        return view('backend.trending-section.index');
+    }
 }

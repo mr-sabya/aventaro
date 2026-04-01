@@ -92,7 +92,11 @@
                     <li><a href="{{ route('admin.website.about-section.index') }}" wire:navigate>About Section</a></li>
                     <!-- partner -->
                     <li><a href="{{ route('admin.website.partner.index') }}" wire:navigate>Partners</a></li>
-                    
+                    <!-- brand section -->
+                    <li><a href="{{ route('admin.website.brand-section.index') }}" wire:navigate>Brand Section</a></li>
+                    <!-- trending destination section -->
+                    <li><a href="{{ route('admin.website.trending-section.index') }}" wire:navigate>Trending Section</a></li>
+
                     <li class="another-level">
                         <a aria-expanded="false" data-bs-toggle="collapse" href="#Profile-page">
                             Profile
