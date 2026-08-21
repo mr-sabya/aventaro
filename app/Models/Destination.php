@@ -95,7 +95,7 @@ class Destination extends Model
     public function faqs(): BelongsToMany
     {
         // Change from HasMany to BelongsToMany
-        return $this->belongsToMany(DestinationFaq::class, 'destination_faq_pivot');
+        return $this->belongsToMany(DestinationFaq::class, 'destination_faq');
     }
 
     /**

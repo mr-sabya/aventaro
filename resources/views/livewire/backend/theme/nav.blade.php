@@ -144,6 +144,9 @@
             </li>
 
             <!-- tours -->
+            <li class="no-sub"><a href="{{ route('admin.bookings.index') }}" wire:navigate><svg stroke="currentColor" stroke-width="1.5"><use xlink:href="{{ url('assets/backend/svg/_sprite.svg#stack') }}"></use></svg>Bookings</a></li>
+            <li class="no-sub"><a href="{{ route('admin.coupons.index') }}" wire:navigate><svg stroke="currentColor" stroke-width="1.5"><use xlink:href="{{ url('assets/backend/svg/_sprite.svg#stack') }}"></use></svg>Coupons</a></li>
+
             <li>
                 <a aria-expanded="false" data-bs-toggle="collapse" href="#tours">
                     <svg stroke="currentColor" stroke-width="1.5">
@@ -154,6 +157,7 @@
                 <ul class="collapse" id="tours">
                     <li><a href="{{ route('admin.tours.index') }}" wire:navigate>Index</a></li>
                     <li><a href="{{ route('admin.tours.amenities') }}" wire:navigate>Amenities</a></li>
+                    <li><a href="{{ route('admin.tours.reviews') }}" wire:navigate>Reviews</a></li>
                 </ul>
             </li>
 

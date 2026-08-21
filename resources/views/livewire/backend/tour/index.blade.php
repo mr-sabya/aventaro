@@ -207,6 +207,24 @@
                                         <input type="text" wire:model="duration" class="form-control" placeholder="e.g. 5 Days / 4 Nights">
                                     </div>
 
+                                    <div class="col-md-3">
+                                        <label class="form-label fw-bold">Available From</label>
+                                        <input type="date" wire:model="available_from" class="form-control @error('available_from') is-invalid @enderror">
+                                        @error('available_from') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label class="form-label fw-bold">Available To</label>
+                                        <input type="date" wire:model="available_to" class="form-control @error('available_to') is-invalid @enderror">
+                                        @error('available_to') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label class="form-label fw-bold">Capacity Per Date</label>
+                                        <input type="number" min="1" wire:model="capacity_per_date" class="form-control @error('capacity_per_date') is-invalid @enderror">
+                                        @error('capacity_per_date') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                    </div>
+
                                     <div class="col-md-6">
                                         <label class="form-label fw-bold">Countries Covered</label>
                                         <input type="text" wire:model="countries_covered" class="form-control" placeholder="e.g. Italy, France, Spain">

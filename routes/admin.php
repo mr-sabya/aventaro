@@ -53,6 +53,12 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::prefix('tours')->name('tours.')->group(function () {
         Route::get('/', [App\Http\Controllers\Backend\TourController::class, 'index'])->name('index');
         Route::get('/amenities', [App\Http\Controllers\Backend\TourController::class, 'amenities'])->name('amenities');
+        Route::get('/reviews', [App\Http\Controllers\Backend\TourController::class, 'reviews'])->name('reviews');
         Route::get('/plans/{id}', [App\Http\Controllers\Backend\TourController::class, 'plans'])->name('plans');
     });
+
+    Route::get('/bookings', [App\Http\Controllers\Backend\BookingController::class, 'index'])->name('bookings.index');
+    Route::get('/bookings/{booking}', [App\Http\Controllers\Backend\BookingController::class, 'show'])->name('bookings.show');
+    Route::patch('/bookings/{booking}/notes', [App\Http\Controllers\Backend\BookingController::class, 'updateNotes'])->name('bookings.notes');
+    Route::get('/coupons', [App\Http\Controllers\Backend\BookingController::class, 'coupons'])->name('coupons.index');
 });

@@ -28,6 +28,9 @@ class Tour extends Model
         'price',
         'old_price',
         'duration',
+        'available_from',
+        'available_to',
+        'capacity_per_date',
         'countries_covered',
         'thumbnail_image',
         'details_image',
@@ -48,6 +51,8 @@ class Tour extends Model
         'is_featured' => 'boolean',
         'is_hot_deal' => 'boolean',
         'is_active' => 'boolean',
+        'available_from' => 'date',
+        'available_to' => 'date',
     ];
 
     /*
@@ -113,5 +118,15 @@ class Tour extends Model
     public function reviews(): HasMany
     {
         return $this->hasMany(TourReview::class)->where('is_approved', true);
+    }
+
+    public function bookings(): HasMany
+    {
+        return $this->hasMany(Booking::class);
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 }

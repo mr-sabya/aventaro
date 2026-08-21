@@ -30,6 +30,6 @@ class DestinationFaq extends Model
      */
     public function destinations(): BelongsToMany
     {
-        return $this->belongsToMany(Destination::class, 'destination_faq_pivot');
+        return $this->belongsToMany(Destination::class, 'destination_faq');
     }
 }

@@ -1,249 +1,32 @@
 @extends('frontend.layouts.app')
 
-
 @section('content')
-
-
-<!--  Breadcrumb Section Start -->
-<div class="breadcrumb-wrapper section-padding  bg-cover" style="background-image: url('assets/frontend/img/breadcrumb-bg.jpg');">
-    <div class="container-fluid">
-        <div class="page-heading">
-            <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".3s">
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <i class="far fa-slash"></i>
-                </li>
-                <li>
-                    Our Destination
-                </li>
-            </ul>
-            <h1 class="wow fadeInUp" data-wow-delay=".5s">Our Destination</h1>
-        </div>
-    </div>
-    <div class="plane-shape float-bob-x">
-        <img src="{{ url('assets/frontend/img/breadcrumb-plane.png') }}" alt="img">
-    </div>
+<div class="breadcrumb-wrapper section-padding bg-cover" style="background-image: url('{{ asset('assets/frontend/img/breadcrumb-bg.jpg') }}');">
+    <div class="container-fluid"><div class="page-heading">
+        <ul class="breadcrumb-items"><li><a href="{{ route('home') }}">Home</a></li><li><i class="far fa-slash"></i></li><li>Destinations</li></ul>
+        <h1>Our Destinations</h1>
+    </div></div>
 </div>
 
-<!-- Trending Section Start -->
 <div class="trending-destinations section-padding">
     <div class="container">
+        <form method="GET" action="{{ route('destination.index') }}" class="row justify-content-center mb-5">
+            <div class="col-lg-7"><div class="input-group"><input class="form-control" name="search" value="{{ request('search') }}" placeholder="Search destination, city, or country"><button class="theme-btn" type="submit"><span>Search</span></button></div></div>
+        </form>
         <div class="row g-4">
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                <div class="trending-destinations-card-items mt-0">
-                    <div class="destinations-img">
-                        <img src="{{ url('assets/frontend/img/destinations/01.jpg') }}" alt="img">
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="destination-details.html">Istanbul, Turkey</a>
-                            </li>
-                        </ul>
-                        <div class="icon">
-                            <a href="destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
+            @forelse ($destinations as $destination)
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="trending-destinations-card-items mt-0"><div class="destinations-img">
+                        <img src="{{ Storage::url($destination->image) }}" alt="{{ $destination->name }}">
+                        <ul class="destinations-content"><li class="title"><a href="{{ route('destination.show', $destination) }}">{{ $destination->name }}@if($destination->city?->country), {{ $destination->city->country->name }}@endif</a></li></ul>
+                        <div class="icon"><a href="{{ route('destination.show', $destination) }}" aria-label="View {{ $destination->name }}"><i class="fas fa-arrow-right"></i></a></div>
+                    </div></div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                <div class="trending-destinations-card-items mt-0">
-                    <div class="destinations-img">
-                        <img src="{{ url('assets/frontend/img/destinations/02.jpg') }}" alt="img">
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="destination-details.html">Kyoto, Japan</a>
-                            </li>
-                        </ul>
-                        <div class="icon">
-                            <a href="destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                <div class="trending-destinations-card-items mt-0">
-                    <div class="destinations-img">
-                        <img src="{{ url('assets/frontend/img/destinations/03.jpg') }}" alt="img">
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="destination-details.html">Vienna, Australia</a>
-                            </li>
-                        </ul>
-                        <div class="icon">
-                            <a href="destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                <div class="trending-destinations-card-items mt-0">
-                    <div class="destinations-img">
-                        <img src="{{ url('assets/frontend/img/destinations/04.jpg') }}" alt="img">
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="destination-details.html">Cusco, Peru</a>
-                            </li>
-                        </ul>
-                        <div class="icon">
-                            <a href="destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                <div class="trending-destinations-card-items mt-0">
-                    <div class="destinations-img">
-                        <img src="{{ url('assets/frontend/img/destinations/05.jpg') }}" alt="img">
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="destination-details.html">Lisbon, Portugal</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                <div class="trending-destinations-card-items mt-0">
-                    <div class="destinations-img">
-                        <img src="{{ url('assets/frontend/img/destinations/06.jpg') }}" alt="img">
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="destination-details.html">Zagreb, Croatia</a>
-                            </li>
-                        </ul>
-                        <div class="icon">
-                            <a href="destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                <div class="trending-destinations-card-items mt-0">
-                    <div class="destinations-img">
-                        <img src="{{ url('assets/frontend/img/destinations/13.jpg') }}" alt="img">
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="destination-details.html">Helsinki, Finland</a>
-                            </li>
-                        </ul>
-                        <div class="icon">
-                            <a href="destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                <div class="trending-destinations-card-items mt-0">
-                    <div class="destinations-img">
-                        <img src="{{ url('assets/frontend/img/destinations/14.jpg') }}" alt="img">
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="destination-details.html">Nairobi, Kenya</a>
-                            </li>
-                        </ul>
-                        <div class="icon">
-                            <a href="destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                <div class="trending-destinations-card-items mt-0">
-                    <div class="destinations-img">
-                        <img src="{{ url('assets/frontend/img/destinations/15.jpg') }}" alt="img">
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="destination-details.html">Manila, Philippines</a>
-                            </li>
-                        </ul>
-                        <div class="icon">
-                            <a href="destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                <div class="trending-destinations-card-items mt-0">
-                    <div class="destinations-img">
-                        <img src="{{ url('assets/frontend/img/destinations/16.jpg') }}" alt="img">
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="destination-details.html">Seville, Spain</a>
-                            </li>
-                        </ul>
-                        <div class="icon">
-                            <a href="destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                <div class="trending-destinations-card-items mt-0">
-                    <div class="destinations-img">
-                        <img src="{{ url('assets/frontend/img/destinations/17.jpg') }}" alt="img">
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="destination-details.html">Tbilisi, Georgia</a>
-                            </li>
-                        </ul>
-                        <div class="icon">
-                            <a href="destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                <div class="trending-destinations-card-items mt-0">
-                    <div class="destinations-img">
-                        <img src="{{ url('assets/frontend/img/destinations/18.jpg') }}" alt="img">
-                        <ul class="destinations-content">
-                            <li class="title">
-                                <a href="destination-details.html">Kigali, Rwanda</a>
-                            </li>
-                        </ul>
-                        <div class="icon">
-                            <a href="destination-details.html">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @empty
+                <div class="col-12 text-center py-5"><h3>No destinations found</h3><p>Try another search.</p></div>
+            @endforelse
         </div>
-        <div class="page-nav-wrap mt-5 text-center wow fadeInUp" data-wow-delay=".3s">
-            <ul>
-                <li><a class="page-numbers" href="#">01</a></li>
-                <li><a class="page-numbers" href="#">02</a></li>
-                <li><a class="page-numbers" href="#">03</a></li>
-                <li><a class="page-numbers" href="#">04</a></li>
-                <li><a class="page-numbers" href="#">05</a></li>
-            </ul>
-        </div>
+        <div class="mt-5">{{ $destinations->links() }}</div>
     </div>
 </div>
-
-
 @endsection

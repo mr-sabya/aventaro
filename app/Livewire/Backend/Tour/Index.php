@@ -19,7 +19,7 @@ class Index extends Component
     protected $paginationTheme = 'bootstrap';
 
     // Model Properties
-    public $tourId, $city_id, $selected_country_id, $title, $address, $description, $price, $old_price, $duration, $countries_covered, $map_embed_url;
+    public $tourId, $city_id, $selected_country_id, $title, $address, $description, $price, $old_price, $duration, $available_from, $available_to, $capacity_per_date = 20, $countries_covered, $map_embed_url;
     public $thumbnail_image, $details_image, $old_thumbnail, $old_details;
     public $is_featured = false, $is_hot_deal = false, $is_active = true;
     public $features = [];
@@ -71,6 +71,9 @@ class Index extends Component
             'price',
             'old_price',
             'duration',
+            'available_from',
+            'available_to',
+            'capacity_per_date',
             'countries_covered',
             'map_embed_url',
             'thumbnail_image',
@@ -103,6 +106,9 @@ class Index extends Component
         $this->price = $tour->price;
         $this->old_price = $tour->old_price;
         $this->duration = $tour->duration;
+        $this->available_from = $tour->available_from?->format('Y-m-d');
+        $this->available_to = $tour->available_to?->format('Y-m-d');
+        $this->capacity_per_date = $tour->capacity_per_date;
         $this->countries_covered = $tour->countries_covered;
         $this->map_embed_url = $tour->map_embed_url;
         $this->is_featured = $tour->is_featured;
@@ -124,6 +130,9 @@ class Index extends Component
             'price' => 'required|numeric',
             'old_price' => 'nullable|numeric',
             'duration' => 'required|string',
+            'available_from' => 'nullable|date',
+            'available_to' => 'nullable|date|after_or_equal:available_from',
+            'capacity_per_date' => 'required|integer|min:1|max:10000',
             'thumbnail_image' => $this->isEditMode ? 'nullable|image|max:2048' : 'required|image|max:2048',
             'details_image' => $this->isEditMode ? 'nullable|image|max:2048' : 'required|image|max:2048',
         ];
@@ -138,6 +147,9 @@ class Index extends Component
             'price' => $this->price,
             'old_price' => $this->old_price,
             'duration' => $this->duration,
+            'available_from' => $this->available_from,
+            'available_to' => $this->available_to,
+            'capacity_per_date' => $this->capacity_per_date,
             'countries_covered' => $this->countries_covered,
             'map_embed_url' => $this->map_embed_url,
             'is_featured' => $this->is_featured,

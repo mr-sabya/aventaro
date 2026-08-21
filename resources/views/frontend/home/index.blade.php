@@ -138,7 +138,7 @@
                     </div>
                     <div class="content">
                         <span>Tourist Guide</span>
-                        <h3><a href="team-details.html">Michel Smith</a></h3>
+                        <h3><a href="{{ route('pages.about') }}">Michel Smith</a></h3>
                         <div class="social-icon">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -155,7 +155,7 @@
                     </div>
                     <div class="content">
                         <span>Tourist Guide</span>
-                        <h3><a href="team-details.html">Arden Smith</a></h3>
+                        <h3><a href="{{ route('pages.about') }}">Arden Smith</a></h3>
                         <div class="social-icon">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -172,7 +172,7 @@
                     </div>
                     <div class="content">
                         <span>Tourist Guide</span>
-                        <h3><a href="team-details.html">Clover Lilac</a></h3>
+                        <h3><a href="{{ route('pages.about') }}">Clover Lilac</a></h3>
                         <div class="social-icon">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -189,7 +189,7 @@
                     </div>
                     <div class="content">
                         <span>Tourist Guide</span>
-                        <h3><a href="team-details.html">Garrison Hale</a></h3>
+                        <h3><a href="{{ route('pages.about') }}">Garrison Hale</a></h3>
                         <div class="social-icon">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -215,7 +215,7 @@
                     system our attraction passes.
                 </p>
             </div>
-            <a href="destination.html" class="theme-btn theme-btn-2 wow fadeInUp" data-wow-delay=".5s">
+            <a href="{{ route('destination.index') }}" class="theme-btn theme-btn-2 wow fadeInUp" data-wow-delay=".5s">
                 <span>Explore More</span> <i class="far fa-long-arrow-right"></i>
             </a>
         </div>
@@ -316,7 +316,7 @@
                 <h2 class="text-white wow fadeInUp" data-wow-delay=".3s">Grab Up To 39% Off On <br> Your Favorite
                     Destination</h2>
             </div>
-            <a href="tour-details.html" class="theme-btn wow fadeInUp" data-wow-delay=".5s">
+            <a href="{{ route('tour.index') }}" class="theme-btn wow fadeInUp" data-wow-delay=".5s">
                 <span>Book Now</span> <i class="far fa-long-arrow-right"></i>
             </a>
             <div class="discount-shape float-bob-y">
@@ -430,10 +430,10 @@
                             <li> <b>By</b> Admin</li>
                             <li><b>23</b> Comments</li>
                         </ul>
-                        <h3><a href="news-details.html">The top 10 places to traveling in the world with your
+                        <h3><a href="{{ route('news.index') }}">The top 10 places to traveling in the world with your
                                 family</a></h3>
                         <p>We offer carefully curated destinations and tours that capture the true essence.</p>
-                        <a href="news-details.html" class="link-btn">Continue Reading <i
+                        <a href="{{ route('news.index') }}" class="link-btn">Continue Reading <i
                                 class="far fa-long-arrow-right"></i></a>
                     </div>
                 </div>
@@ -456,10 +456,10 @@
                             <li> <b>By</b> Admin</li>
                             <li><b>23</b> Comments</li>
                         </ul>
-                        <h3><a href="news-details.html">Enrich Your Mind Envision Your Future Education for
+                        <h3><a href="{{ route('news.index') }}">Enrich Your Mind Envision Your Future Education for
                                 Success</a></h3>
                         <p>We offer carefully curated destinations and tours that capture the true essence.</p>
-                        <a href="news-details.html" class="link-btn">Continue Reading <i
+                        <a href="{{ route('news.index') }}" class="link-btn">Continue Reading <i
                                 class="far fa-long-arrow-right"></i></a>
                     </div>
                 </div>
@@ -482,9 +482,9 @@
                             <li> <b>By</b> Admin</li>
                             <li><b>23</b> Comments</li>
                         </ul>
-                        <h3><a href="news-details.html">Exploring The Green Spaces Of Realar Residence</a></h3>
+                        <h3><a href="{{ route('news.index') }}">Exploring The Green Spaces Of Realar Residence</a></h3>
                         <p>We offer carefully curated destinations and tours that capture the true essence.</p>
-                        <a href="news-details.html" class="link-btn">Continue Reading <i
+                        <a href="{{ route('news.index') }}" class="link-btn">Continue Reading <i
                                 class="far fa-long-arrow-right"></i></a>
                     </div>
                 </div>

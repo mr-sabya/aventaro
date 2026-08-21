@@ -19,6 +19,11 @@ class TourController extends Controller
         return view('backend.tour.index');
     }
 
+    public function reviews()
+    {
+        return view('backend.tour.reviews');
+    }
+
     // plan manager
     public function plans($id)
     {

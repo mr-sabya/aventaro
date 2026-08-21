@@ -193,6 +193,8 @@
 </div>
 
 <!--  Destination Section Start -->
+<livewire:frontend.components.destination-section />
+@if (false)
 <section class="destination-section-22 fix section-padding pt-0">
     <div class="destination-wrapper-22">
         <div class="swiper destination-auto-slider">
@@ -385,6 +387,7 @@
 </section>
 
 <!-- about Section Start -->
+@endif
 <section class="about-section section-padding section-bg fix">
     <div class="container">
         <div class="about-wrappper-2">
