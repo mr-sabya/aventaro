@@ -1,0 +1,4 @@
+<?php
+namespace App\Support;
+use Illuminate\Http\UploadedFile; use Illuminate\Support\Facades\Storage; use Illuminate\Support\Str;
+class OptimizedImage { public static function store(UploadedFile $file,string $directory,int $maxWidth=1920):string {if(!function_exists('imagecreatefromstring')||!function_exists('imagewebp'))return $file->store($directory,'public');$image=@imagecreatefromstring(file_get_contents($file->getRealPath()));if(!$image)return $file->store($directory,'public');$width=imagesx($image);if($width>$maxWidth){$scaled=imagescale($image,$maxWidth,(int)round(imagesy($image)*$maxWidth/$width),IMG_BICUBIC_FIXED);imagedestroy($image);$image=$scaled;}$path=trim($directory,'/').'/'.Str::uuid().'.webp';ob_start();imagewebp($image,null,82);$webp=ob_get_clean();imagedestroy($image);Storage::disk('public')->put($path,$webp);return $path;} }

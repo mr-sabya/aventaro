@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 class NewsPost extends Model
 {
-    protected $fillable=['news_category_id','title','slug','author','excerpt','content','image','published_at','is_active','status','view_count'];
+    protected $fillable=['news_category_id','title','slug','author','excerpt','content','image','image_alt','published_at','is_active','status','view_count'];
     protected $casts=['published_at'=>'datetime','is_active'=>'boolean','view_count'=>'integer'];
     protected static function booted(){static::saving(function($post){if(!$post->slug||$post->isDirty('title'))$post->slug=Str::slug($post->title);});}
     public function category():BelongsTo{return $this->belongsTo(NewsCategory::class,'news_category_id');}

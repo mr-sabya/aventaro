@@ -26,7 +26,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li class="dropdown-item">
-                        <a class="f-w-500" href="{{ route('admin.dashboard') }}">
+                        <a class="f-w-500" href="{{ route('admin.profile.edit') }}">
                             <i class="ph-duotone  ph-user-circle pe-1 f-s-20"></i> Profile Details
                         </a>
                     </li>

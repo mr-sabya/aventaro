@@ -1,4 +1,6 @@
 @extends('frontend.layouts.app')
+@section('title','Destinations | Aventaro')
+@section('meta_description','Explore inspiring destinations and find available Aventaro tours.')
 
 @section('content')
 <div class="breadcrumb-wrapper section-padding bg-cover" style="background-image: url('{{ asset('assets/frontend/img/breadcrumb-bg.jpg') }}');">

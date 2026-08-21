@@ -1,4 +1,6 @@
 @extends('frontend.layouts.app')
+@section('title','Contact Us | Aventaro')
+@section('meta_description','Contact Aventaro for booking help, travel questions, and tour assistance.')
 
 
 @section('content')

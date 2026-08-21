@@ -21,7 +21,7 @@ class Index extends Component
     protected $paginationTheme = 'bootstrap';
 
     // Model Properties
-    public $destinationId, $city_id, $currency_id, $name, $description, $visa_requirements, $area, $map_embed_url;
+    public $destinationId, $city_id, $currency_id, $name, $description, $visa_requirements, $area, $map_embed_url, $image_alt;
     public $selected_country_id; // Added for dependent dropdown
     public $image, $oldImage;
     public $is_trending = false;
@@ -108,6 +108,7 @@ class Index extends Component
         $this->is_active = $destination->is_active;
         $this->features = $destination->features ?? [];
         $this->oldImage = $destination->image;
+        $this->image_alt = $destination->image_alt;
 
         $this->selectedLanguages = $destination->languages->pluck('id')->toArray();
         $this->selectedFaqs = $destination->faqs->pluck('id')->toArray();
@@ -123,6 +124,7 @@ class Index extends Component
             'city_id' => 'required|exists:cities,id',
             'currency_id' => 'required|exists:currencies,id',
             'image' => $this->isEditMode ? 'nullable|image|max:2048' : 'required|image|max:2048',
+            'image_alt' => 'nullable|string|max:255',
         ];
 
         $this->validate($rules);
@@ -135,6 +137,7 @@ class Index extends Component
             'visa_requirements' => $this->visa_requirements,
             'area' => $this->area,
             'map_embed_url' => $this->map_embed_url,
+            'image_alt' => $this->image_alt,
             'is_trending' => $this->is_trending,
             'is_active' => $this->is_active,
             'features' => array_filter($this->features),

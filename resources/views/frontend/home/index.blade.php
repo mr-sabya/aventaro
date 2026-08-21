@@ -1,4 +1,6 @@
 @extends('frontend.layouts.app')
+@section('title','Aventaro | Travel & Tour Booking')
+@section('meta_description','Discover curated tours, trusted guides, and memorable destinations with Aventaro.')
 
 @section('content')
 <!-- Hero Section Start -->

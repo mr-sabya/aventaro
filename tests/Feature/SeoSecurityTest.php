@@ -1,0 +1,8 @@
+<?php
+namespace Tests\Feature;
+use App\Models\User; use Illuminate\Auth\Notifications\ResetPassword; use Illuminate\Foundation\Testing\RefreshDatabase; use Illuminate\Support\Facades\Notification; use Tests\TestCase;
+class SeoSecurityTest extends TestCase { use RefreshDatabase;
+ public function test_sitemap_robots_and_social_metadata_render():void {$this->get('/sitemap.xml')->assertOk()->assertHeader('content-type','application/xml')->assertSee(route('home'),false);$this->get('/robots.txt')->assertOk()->assertSee('Disallow: /admin')->assertSee(route('sitemap'));$this->get('/')->assertOk()->assertSee('rel="canonical"',false)->assertSee('property="og:title"',false);}
+ public function test_admin_can_request_reset_and_manage_profile():void {Notification::fake();$admin=User::factory()->create(['is_admin'=>true,'password'=>'OldPassword123!']);$this->post(route('admin.password.email'),['email'=>$admin->email])->assertSessionHas('status');Notification::assertSentTo($admin,ResetPassword::class);$this->actingAs($admin)->put(route('admin.profile.update'),['name'=>'Updated Admin','email'=>'updated@example.com'])->assertSessionHasNoErrors();$this->assertDatabaseHas('users',['id'=>$admin->id,'name'=>'Updated Admin','email'=>'updated@example.com']);}
+ public function test_article_content_is_escaped_on_public_page():void {\App\Models\NewsPost::create(['title'=>'Safe Story','author'=>'Admin','excerpt'=>'Safe excerpt','content'=>'<script>alert(1)</script>','image'=>'news/test.jpg','status'=>'published','is_active'=>true,'published_at'=>now()]);$this->get('/news/safe-story')->assertOk()->assertDontSee('<script>alert(1)</script>',false)->assertSee('&lt;script&gt;',false);}
+}

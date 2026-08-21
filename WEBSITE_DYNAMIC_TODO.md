@@ -154,22 +154,22 @@ Or:
 
 ## Priority 11 — SEO, reliability, and security
 
-- [ ] Replace the global demo page title and description.
-- [ ] Add per-page titles and meta descriptions.
-- [ ] Add canonical URLs and social-sharing metadata.
-- [ ] Add structured data for tours, destinations, articles, and reviews.
-- [ ] Generate the XML sitemap dynamically.
-- [ ] Configure production `robots.txt`.
-- [ ] Add image alt-text fields.
-- [ ] Add image resizing and WebP optimization.
-- [ ] Add unique validation and safe upload validation.
-- [ ] Sanitize rich-text content.
-- [ ] Add admin authorization beyond a single `is_admin` flag if multiple staff roles are needed.
-- [ ] Add password reset and admin profile management.
-- [ ] Add database seed data for all major sections.
-- [ ] Add feature tests for public pages and admin CRUD.
-- [ ] Add tests for booking, contact, and review submission.
-- [ ] Add empty-state handling when database records do not exist.
+  - [x] Replace the global demo page title and description.
+  - [x] Add per-page titles and meta descriptions.
+  - [x] Add canonical URLs and social-sharing metadata.
+  - [x] Add structured data for tours, destinations, articles, and reviews.
+  - [x] Generate the XML sitemap dynamically.
+  - [x] Configure production `robots.txt`.
+  - [x] Add image alt-text fields.
+  - [x] Add image resizing and WebP optimization.
+  - [x] Add unique validation and safe upload validation.
+  - [x] Sanitize rich-text content.
+  - [x] Not required currently — the application has one administrator role; authorization remains enforced by the admin middleware.
+  - [x] Add password reset and admin profile management.
+  - [x] Add database seed data for all major sections.
+  - [x] Add feature tests for public pages and admin CRUD.
+  - [x] Add tests for booking, contact, and review submission.
+  - [x] Add empty-state handling when database records do not exist.
 
 ## Recommended implementation order
 

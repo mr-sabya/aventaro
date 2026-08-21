@@ -19,7 +19,7 @@ class Index extends Component
     protected $paginationTheme = 'bootstrap';
 
     // Model Properties
-    public $tourId, $city_id, $selected_country_id, $title, $address, $description, $price, $old_price, $duration, $available_from, $available_to, $capacity_per_date = 20, $countries_covered, $map_embed_url;
+    public $tourId, $city_id, $selected_country_id, $title, $address, $description, $price, $old_price, $duration, $available_from, $available_to, $capacity_per_date = 20, $countries_covered, $map_embed_url, $image_alt;
     public $thumbnail_image, $details_image, $old_thumbnail, $old_details;
     public $is_featured = false, $is_hot_deal = false, $is_active = true;
     public $features = [];
@@ -117,6 +117,7 @@ class Index extends Component
         $this->features = $tour->features ?? [];
         $this->old_thumbnail = $tour->thumbnail_image;
         $this->old_details = $tour->details_image;
+        $this->image_alt = $tour->image_alt;
         $this->selectedAmenities = $tour->amenities->pluck('id')->toArray();
 
         $this->dispatch('show-modal');
@@ -135,6 +136,7 @@ class Index extends Component
             'capacity_per_date' => 'required|integer|min:1|max:10000',
             'thumbnail_image' => $this->isEditMode ? 'nullable|image|max:2048' : 'required|image|max:2048',
             'details_image' => $this->isEditMode ? 'nullable|image|max:2048' : 'required|image|max:2048',
+            'image_alt' => 'nullable|string|max:255',
         ];
 
         $this->validate($rules);
@@ -152,6 +154,7 @@ class Index extends Component
             'capacity_per_date' => $this->capacity_per_date,
             'countries_covered' => $this->countries_covered,
             'map_embed_url' => $this->map_embed_url,
+            'image_alt' => $this->image_alt,
             'is_featured' => $this->is_featured,
             'is_hot_deal' => $this->is_hot_deal,
             'is_active' => $this->is_active,

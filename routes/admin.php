@@ -4,9 +4,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login', [App\Http\Controllers\Backend\AuthController::class, 'showLoginForm'])->name('login');
+Route::get('/forgot-password', [App\Http\Controllers\Backend\PasswordController::class, 'request'])->name('password.request');
+Route::post('/forgot-password', [App\Http\Controllers\Backend\PasswordController::class, 'email'])->name('password.email');
+Route::get('/reset-password/{token}', [App\Http\Controllers\Backend\PasswordController::class, 'reset'])->name('password.reset');
+Route::post('/reset-password', [App\Http\Controllers\Backend\PasswordController::class, 'update'])->name('password.update');
 
 Route::middleware(['isAdmin'])->group(function () {
     Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [App\Http\Controllers\Backend\AccountController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [App\Http\Controllers\Backend\AccountController::class, 'update'])->name('profile.update');
 
     // hero-slider
     Route::prefix('website')->name('website.')->group(function () {

@@ -1,4 +1,9 @@
 @extends('frontend.layouts.app')
+@section('title',$tour->title.' | Aventaro')
+@section('meta_description',Str::limit(strip_tags($tour->description),155))
+@section('canonical',route('tour.show',$tour))
+@section('social_image',Storage::url($tour->details_image ?: $tour->thumbnail_image))
+@push('structured-data')<script type="application/ld+json">{!! json_encode(['@context'=>'https://schema.org','@type'=>'TouristTrip','name'=>$tour->title,'description'=>strip_tags($tour->description),'image'=>Storage::url($tour->details_image ?: $tour->thumbnail_image),'url'=>route('tour.show',$tour),'offers'=>['@type'=>'Offer','price'=>(float)$tour->price,'priceCurrency'=>'USD','availability'=>'https://schema.org/InStock'],'aggregateRating'=>$tour->reviews->isNotEmpty()?['@type'=>'AggregateRating','ratingValue'=>round($tour->reviews->avg('rating'),1),'reviewCount'=>$tour->reviews->count()]:null,'review'=>$tour->reviews->map(fn($review)=>['@type'=>'Review','author'=>['@type'=>'Person','name'=>$review->name],'reviewRating'=>['@type'=>'Rating','ratingValue'=>$review->rating],'reviewBody'=>$review->comment])->values()],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE) !!}</script>@endpush
 
 @section('content')
 <div class="breadcrumb-wrapper section-padding bg-cover" style="background-image: url('{{ asset('assets/frontend/img/breadcrumb-bg.jpg') }}');">
@@ -10,7 +15,7 @@
         @if(session('success'))<div class="alert alert-success">{{ session('success') }}</div>@endif
         <div class="row g-5">
             <div class="col-lg-8">
-                <img class="img-fluid w-100 rounded mb-4" src="{{ Storage::url($tour->details_image) }}" alt="{{ $tour->title }}">
+                <img class="img-fluid w-100 rounded mb-4" src="{{ Storage::url($tour->details_image) }}" alt="{{ $tour->image_alt ?: $tour->title }}">
                 <h2>{{ $tour->title }}</h2>
                 <div class="d-flex flex-wrap gap-4 my-3">
                     <span><i class="far fa-map-marker-alt"></i> {{ $tour->city?->name }}@if($tour->city?->country), {{ $tour->city->country->name }}@endif</span>

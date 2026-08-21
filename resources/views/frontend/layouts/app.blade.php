@@ -11,6 +11,13 @@
     <meta name="description" content="@yield('meta_description', $siteSettings?->tagline ?: 'Travel and tour booking')">
     <!-- ======== Page title ============ -->
     <title>@yield('title', $siteSettings?->site_name ?: 'Aventaro')</title>
+    <link rel="canonical" href="@yield('canonical', url()->current())">
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:title" content="@yield('title', $siteSettings?->site_name ?: 'Aventaro')">
+    <meta property="og:description" content="@yield('meta_description', $siteSettings?->tagline ?: 'Travel and tour booking')">
+    <meta property="og:url" content="@yield('canonical', url()->current())">
+    <meta property="og:image" content="@yield('social_image', $siteSettings?->logo ? asset('storage/'.$siteSettings->logo) : asset('assets/frontend/img/logo/aventro.png'))">
+    <meta name="twitter:card" content="summary_large_image">
     <!--<< Favicon >>-->
     <link rel="shortcut icon" href="{{ $siteSettings?->favicon ? asset('storage/'.$siteSettings->favicon) : asset('assets/frontend/img/favicon.svg') }}">
     <!--<< Bootstrap min.css >>-->
@@ -36,6 +43,7 @@
     <!--<< Style.css >>-->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
     @livewireStyles
+    @stack('structured-data')
 </head>
 
 <body>

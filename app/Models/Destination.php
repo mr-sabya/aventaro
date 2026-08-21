@@ -25,6 +25,7 @@ class Destination extends Model
         'name',
         'slug',
         'image',
+        'image_alt',
         'description',
         'visa_requirements',
         'area',

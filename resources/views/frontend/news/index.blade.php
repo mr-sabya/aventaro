@@ -1,4 +1,6 @@
 @extends('frontend.layouts.app')
+@section('title','Travel News | Aventaro')
+@section('meta_description','Travel inspiration, destination guides, and the latest Aventaro news.')
 @section('content')
 <div class="breadcrumb-wrapper section-padding bg-cover" style="background-image:url('{{asset('assets/frontend/img/breadcrumb-bg.jpg')}}')"><div class="container-fluid"><div class="page-heading"><ul class="breadcrumb-items"><li><a href="{{route('home')}}">Home</a></li><li><i class="far fa-slash"></i></li><li>Blog & News</li></ul><h1>Blog & News</h1></div></div></div>
 <section class="blog-wrapper news-wrapper section-padding"><div class="container"><div class="news-area"><div class="row"><div class="col-12 col-xl-8 col-lg-7"><div class="blog-posts">

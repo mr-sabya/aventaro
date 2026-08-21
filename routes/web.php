@@ -9,9 +9,12 @@ use App\Http\Controllers\Frontend\TeamController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\EngagementController;
 use App\Http\Controllers\Frontend\PreferenceController;
+use App\Http\Controllers\Frontend\SeoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
+Route::get('/robots.txt', [SeoController::class, 'robots'])->name('robots');
 Route::post('/preferences', PreferenceController::class)->name('preferences.update');
 Route::get('/tour-packages', [TourController::class, 'index'])->name('tour.index');
 Route::get('/tour-packages/{tour}', [TourController::class, 'show'])->name('tour.show');

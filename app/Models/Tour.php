@@ -34,6 +34,7 @@ class Tour extends Model
         'countries_covered',
         'thumbnail_image',
         'details_image',
+        'image_alt',
         'features',
         'map_embed_url',
         'is_featured',

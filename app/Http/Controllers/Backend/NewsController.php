@@ -9,6 +9,7 @@ use App\Models\NewsTag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use App\Support\OptimizedImage;
 
 class NewsController extends Controller
 {
@@ -20,10 +21,10 @@ class NewsController extends Controller
     public function update(Request $request,NewsPost $post){return $this->persist($request,$post);}
     private function persist(Request $request,NewsPost $post)
     {
-        $data=$request->validate(['news_category_id'=>['nullable','exists:news_categories,id'],'title'=>['required','string','max:255',Rule::unique('news_posts','title')->ignore($post->id)],'author'=>['required','string','max:120'],'excerpt'=>['required','string','max:1000'],'content'=>['required','string'],'image'=>[$post->exists?'nullable':'required','image','max:4096'],'status'=>['required','in:draft,published'],'published_at'=>['nullable','date'],'tags'=>['nullable','array'],'tags.*'=>['integer','exists:news_tags,id']]);
+        $data=$request->validate(['news_category_id'=>['nullable','exists:news_categories,id'],'title'=>['required','string','max:255',Rule::unique('news_posts','title')->ignore($post->id)],'author'=>['required','string','max:120'],'excerpt'=>['required','string','max:1000'],'content'=>['required','string'],'image'=>[$post->exists?'nullable':'required','image','mimes:jpg,jpeg,png,webp','max:4096'],'image_alt'=>['nullable','string','max:255'],'status'=>['required','in:draft,published'],'published_at'=>['nullable','date'],'tags'=>['nullable','array'],'tags.*'=>['integer','exists:news_tags,id']]);
         if($data['status']==='published'&&!$data['published_at'])$data['published_at']=now();
         $data['is_active']=$data['status']==='published';
-        if($request->hasFile('image')){if($post->image)Storage::disk('public')->delete($post->image);$data['image']=$request->file('image')->store('news','public');}
+        if($request->hasFile('image')){if($post->image)Storage::disk('public')->delete($post->image);$data['image']=OptimizedImage::store($request->file('image'),'news');}
         $tags=$data['tags']??[];unset($data['tags']);$post->fill($data)->save();$post->tags()->sync($tags);
         return redirect()->route('admin.news.index')->with('message','Article saved.');
     }
