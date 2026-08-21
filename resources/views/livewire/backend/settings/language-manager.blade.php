@@ -51,7 +51,7 @@
                             <th style="cursor:pointer" wire:click="sortBy('code')">
                                 ISO Code <span class="ms-1 text-muted small">{{ $sortField === 'code' ? ($sortDirection === 'asc' ? '▲' : '▼') : '↕' }}</span>
                             </th>
-                            <th class="text-end">Actions</th>
+                            <th>Status</th><th class="text-end">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,6 +71,7 @@
                                     {{ strtoupper($language->code) }}
                                 </span>
                             </td>
+                            <td><span class="badge {{ $language->is_active ? 'bg-success' : 'bg-secondary' }}">{{ $language->is_active ? 'Active' : 'Inactive' }}</span></td>
                             <td class="text-end">
                                 <div class="btn-group shadow-sm">
                                     <button wire:click="edit({{ $language->id }})" class="btn btn-sm btn-white border" title="Edit">
@@ -117,6 +118,7 @@
                             <input type="text" wire:model="name" class="form-control @error('name') is-invalid @enderror" placeholder="e.g. English">
                             @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
+                        <div class="form-check form-switch"><input class="form-check-input" type="checkbox" wire:model="is_active" id="language-active"><label class="form-check-label" for="language-active">Available to visitors</label></div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold text-secondary">ISO Code / Short Code</label>

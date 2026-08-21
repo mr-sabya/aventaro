@@ -1,0 +1,2 @@
+@extends('frontend.layouts.app')
+@section('content')<section class="section-padding"><div class="container"><div class="row justify-content-center"><div class="col-lg-6 text-center"><h1>Newsletter Subscription</h1><p>Unsubscribe <strong>{{$subscriber->email}}</strong> from future newsletters?</p>@if($subscriber->is_active)<form method="POST" action="{{route('newsletter.destroy',$subscriber)}}">@csrf<button class="theme-btn">Unsubscribe</button></form>@else<div class="alert alert-info">This address is already unsubscribed.</div>@endif</div></div></div></section>@endsection

@@ -20,6 +20,8 @@
 <livewire:frontend.components.discover-section />
 
 <!--  Marquee Section Start -->
+<livewire:frontend.components.homepage-content />
+@if (false)
 <div class="marquee-section fix section-padding pt-0">
     <div class="marque-wrapper style-2">
         <div class="swiper text-slider">
@@ -492,6 +494,8 @@
         </div>
     </div>
 </section>
+
+@endif
 
 <!-- Instagram Section Start -->
 <div class="instagram-section fix">

@@ -13,7 +13,7 @@ class LanguageManager extends Component
     protected $paginationTheme = 'bootstrap';
 
     // Model Properties
-    public $name, $code, $languageId;
+    public $name, $code, $is_active = true, $languageId;
 
     // Table State
     public $search = '';
@@ -37,6 +37,7 @@ class LanguageManager extends Component
     public function resetFields()
     {
         $this->reset(['name', 'code', 'languageId', 'isEditMode']);
+        $this->is_active = true;
         $this->resetValidation();
     }
 
@@ -47,6 +48,7 @@ class LanguageManager extends Component
         $this->languageId = $id;
         $this->name = $language->name;
         $this->code = $language->code;
+        $this->is_active = $language->is_active;
 
         $this->dispatch('show-modal');
     }
@@ -56,6 +58,7 @@ class LanguageManager extends Component
         $validatedData = $this->validate([
             'name' => 'required|string|max:100|unique:languages,name,' . $this->languageId,
             'code' => 'required|string|max:10|unique:languages,code,' . $this->languageId,
+            'is_active' => 'boolean',
         ]);
 
         Language::updateOrCreate(['id' => $this->languageId], $validatedData);

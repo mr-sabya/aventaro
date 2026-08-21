@@ -1,0 +1,8 @@
+@extends('frontend.layouts.app')
+@section('content')
+<div class="breadcrumb-wrapper section-padding bg-cover" style="background-image:url('{{asset('assets/frontend/img/breadcrumb-bg.jpg')}}')"><div class="container-fluid"><div class="page-heading"><h1>Search Results</h1></div></div></div><section class="section-padding"><div class="container"><form action="{{route('search')}}" class="input-group mb-5"><input name="q" value="{{$q}}" class="form-control" required minlength="2"><button class="theme-btn">Search</button></form><h2>Results for “{{$q}}”</h2>
+@if($tours->isEmpty()&&$destinations->isEmpty()&&$articles->isEmpty())<div class="text-center py-5"><h3>No results found.</h3></div>@endif
+@if($tours->isNotEmpty())<h3 class="mt-5">Tours</h3><div class="row g-4">@foreach($tours as $tour)<div class="col-lg-4"><div class="border rounded p-3"><h4><a href="{{route('tour.show',$tour)}}">{{$tour->title}}</a></h4><p>{{Str::limit($tour->description,120)}}</p></div></div>@endforeach</div>@endif
+@if($destinations->isNotEmpty())<h3 class="mt-5">Destinations</h3><div class="row g-4">@foreach($destinations as $destination)<div class="col-lg-4"><div class="border rounded p-3"><h4><a href="{{route('destination.show',$destination)}}">{{$destination->name}}</a></h4><p>{{Str::limit($destination->description,120)}}</p></div></div>@endforeach</div>@endif
+@if($articles->isNotEmpty())<h3 class="mt-5">Articles</h3><div class="row g-4">@foreach($articles as $article)<div class="col-lg-4"><div class="border rounded p-3"><h4><a href="{{route('news.show',$article)}}">{{$article->title}}</a></h4><p>{{$article->excerpt}}</p></div></div>@endforeach</div>@endif
+</div></section>@endsection

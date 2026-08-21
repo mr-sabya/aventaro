@@ -10,7 +10,8 @@ class Currency extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'code', 'symbol'];
+    protected $fillable = ['name', 'code', 'symbol', 'exchange_rate', 'is_active'];
+    protected $casts = ['exchange_rate' => 'decimal:6', 'is_active' => 'boolean'];
 
     public function destinations(): HasMany
     {

@@ -39,8 +39,8 @@
                 </form>
             </div>
             <aside class="col-lg-4"><div class="border rounded p-4 sticky-top" style="top: 30px">
-                <h3>Book This Tour</h3><h2 class="text-primary my-3">${{ number_format((float)$tour->price,2) }} <small class="fs-6 text-muted">per traveller</small></h2>
-                @if($tour->old_price)<p><del>${{ number_format((float)$tour->old_price,2) }}</del></p>@endif
+                <h3>Book This Tour</h3><h2 class="text-primary my-3">{{ \App\Support\Money::format($tour->price) }} <small class="fs-6 text-muted">per traveller</small></h2>
+                @if($tour->old_price)<p><del>{{ \App\Support\Money::format($tour->old_price) }}</del></p>@endif
                 <p><strong>Duration:</strong> {{ $tour->duration }}</p>
                 @if($tour->available_from)<p><strong>Available from:</strong> {{ $tour->available_from->format('M j, Y') }}</p>@endif
                 @if($tour->available_to)<p><strong>Available to:</strong> {{ $tour->available_to->format('M j, Y') }}</p>@endif
@@ -60,7 +60,7 @@
             </div></aside>
         </div>
 
-        @if($relatedTours->isNotEmpty())<div class="mt-5 pt-4"><h2>Related Tours</h2><div class="row g-4 mt-2">@foreach($relatedTours as $related)<div class="col-lg-3 col-md-6"><div class="tour-box-items mt-0"><div class="thumb"><img src="{{ Storage::url($related->thumbnail_image) }}" alt="{{ $related->title }}"></div><div class="content"><h4><a href="{{ route('tour.show',$related) }}">{{ $related->title }}</a></h4><h6>From <span>${{ number_format((float)$related->price,2) }}</span></h6></div></div></div>@endforeach</div></div>@endif
+        @if($relatedTours->isNotEmpty())<div class="mt-5 pt-4"><h2>Related Tours</h2><div class="row g-4 mt-2">@foreach($relatedTours as $related)<div class="col-lg-3 col-md-6"><div class="tour-box-items mt-0"><div class="thumb"><img src="{{ Storage::url($related->thumbnail_image) }}" alt="{{ $related->title }}"></div><div class="content"><h4><a href="{{ route('tour.show',$related) }}">{{ $related->title }}</a></h4><h6>From <span>{{ \App\Support\Money::format($related->price) }}</span></h6></div></div></div>@endforeach</div></div>@endif
     </div>
 </section>
 @endsection

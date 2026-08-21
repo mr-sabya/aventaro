@@ -5,10 +5,14 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\TourController;
+use App\Http\Controllers\Frontend\TeamController;
 use App\Http\Controllers\Frontend\BookingController;
+use App\Http\Controllers\Frontend\EngagementController;
+use App\Http\Controllers\Frontend\PreferenceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/preferences', PreferenceController::class)->name('preferences.update');
 Route::get('/tour-packages', [TourController::class, 'index'])->name('tour.index');
 Route::get('/tour-packages/{tour}', [TourController::class, 'show'])->name('tour.show');
 Route::post('/tour-packages/{tour}/reviews', [TourController::class, 'storeReview'])
@@ -20,5 +24,15 @@ Route::post('/bookings/{booking}/cancel', [BookingController::class, 'cancel'])-
 Route::get('/destinations', [DestinationController::class, 'index'])->name('destination.index');
 Route::get('/destinations/{destination}', [DestinationController::class, 'show'])->name('destination.show');
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{post}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/about-us', [PageController::class, 'aboutPage'])->name('pages.about');
-Route::get('/conatct-us', [PageController::class, 'contactPage'])->name('pages.conatct');
+Route::get('/team', [TeamController::class, 'index'])->name('team.index');
+Route::get('/team/{member}', [TeamController::class, 'show'])->name('team.show');
+Route::get('/contact-us', [PageController::class, 'contactPage'])->name('pages.contact');
+Route::redirect('/conatct-us', '/contact-us', 301);
+Route::post('/contact-us', [EngagementController::class, 'contact'])->middleware('throttle:5,1')->name('contact.store');
+Route::post('/appointments', [EngagementController::class, 'contact'])->middleware('throttle:5,1')->name('appointment.store');
+Route::post('/newsletter', [EngagementController::class, 'subscribe'])->middleware('throttle:5,1')->name('newsletter.subscribe');
+Route::get('/newsletter/unsubscribe/{subscriber}', [EngagementController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+Route::post('/newsletter/unsubscribe/{subscriber}', [EngagementController::class, 'destroySubscription'])->name('newsletter.destroy');
+Route::get('/search', [EngagementController::class, 'search'])->name('search');

@@ -89,17 +89,17 @@
                                     </a>
                                     <ul class="dropdown-menu mb-3">
                                         <li class="dropdown-item">
-                                            <a href="setting.html" target="_blank">
+                                            <a href="{{ route('admin.site-settings.index') }}">
                                                 Privacy Settings
                                             </a>
                                         </li>
                                         <li class="dropdown-item">
-                                            <a href="setting.html" target="_blank">
+                                            <a href="{{ route('admin.site-settings.index') }}">
                                                 Account Settings
                                             </a>
                                         </li>
                                         <li class="dropdown-item">
-                                            <a href="setting.html" target="_blank">
+                                            <a href="{{ route('admin.site-settings.index') }}">
                                                 Accessibility
                                             </a>
                                         </li>
@@ -111,17 +111,17 @@
                                             </a>
                                             <ul class="dropdown-menu sub-menu">
                                                 <li class="dropdown-item">
-                                                    <a href="setting.html" target="_blank">
+                                                    <a href="{{ route('admin.site-settings.index') }}">
                                                         Backup and Restore
                                                     </a>
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <a href="setting.html" target="_blank">
+                                                    <a href="{{ route('admin.site-settings.index') }}">
                                                         <span>Data Usage</span>
                                                     </a>
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <a href="setting.html" target="_blank">
+                                                    <a href="{{ route('admin.site-settings.index') }}">
                                                         <span>Theme</span>
                                                     </a>
                                                 </li>
@@ -238,7 +238,7 @@
                                     </div>
                                     <div class="d-flex-center text-center">
                                         <a class="text-light-success w-100 rounded-3 py-3 px-2 "
-                                            href="profile.html"
+                                            href="{{ route('admin.dashboard') }}"
                                             target="_blank">
                                             <span>
                                                 <i class="ph-light  ph-users-three f-s-30"></i>

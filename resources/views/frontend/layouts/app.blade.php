@@ -6,12 +6,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="modinatheme">
-    <meta name="description" content="Travil - Travel & Tour Booking Html Template">
+    @php($siteSettings = \App\Models\SiteSetting::query()->first())
+    <meta name="author" content="{{ $siteSettings?->site_name ?: 'Aventaro' }}">
+    <meta name="description" content="{{ $siteSettings?->tagline ?: 'Travel and tour booking' }}">
     <!-- ======== Page title ============ -->
-    <title>Travil - Travel & Tour Booking Html Template</title>
+    <title>@yield('title', $siteSettings?->site_name ?: 'Aventaro')</title>
     <!--<< Favicon >>-->
-    <link rel="shortcut icon" href="{{ asset('assets/frontend/img/favicon.svg') }}">
+    <link rel="shortcut icon" href="{{ $siteSettings?->favicon ? asset('storage/'.$siteSettings->favicon) : asset('assets/frontend/img/favicon.svg') }}">
     <!--<< Bootstrap min.css >>-->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
     <!--<< Font Awesome.css >>-->

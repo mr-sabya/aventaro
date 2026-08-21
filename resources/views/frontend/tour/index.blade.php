@@ -28,7 +28,7 @@
                         <div class="content">
                             <span>{{ $tour->city?->country?->name ?? $tour->city?->name }}</span>
                             <h4><a href="{{ route('tour.show', $tour) }}">{{ $tour->title }}</a></h4>
-                            <h6>From <span>${{ number_format((float) $tour->price, 2) }}</span>@if($tour->old_price) <del>${{ number_format((float) $tour->old_price, 2) }}</del>@endif</h6>
+                            <h6>From <span>{{ \App\Support\Money::format($tour->price) }}</span>@if($tour->old_price) <del>{{ \App\Support\Money::format($tour->old_price) }}</del>@endif</h6>
                             <ul class="list"><li><i class="far fa-calendar"></i> {{ $tour->duration }}</li>@if($tour->countries_covered)<li><i class="far fa-flag"></i> {{ $tour->countries_covered }}</li>@endif</ul>
                         </div>
                     </div>

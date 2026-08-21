@@ -65,66 +65,66 @@ The website presents itself as a booking website, but no booking model or workfl
 
 These homepage sections are currently hardcoded:
 
-- [ ] Make the “Why choose us” feature ticker dynamic.
-- [ ] Make the tour guiding team dynamic.
-- [ ] Make the “Inspiration for Future Travel” categories dynamic.
-- [ ] Make the discount promotional banner dynamic.
-- [ ] Make testimonials dynamic.
-- [ ] Make the latest news/articles block dynamic.
-- [ ] Make the app download promotion dynamic.
-- [ ] Add a model, migration, admin manager, active status, and sort order where appropriate.
+- [x] Make the “Why choose us” feature ticker dynamic.
+- [x] Make the tour guiding team dynamic.
+- [x] Make the “Inspiration for Future Travel” categories dynamic.
+- [x] Make the discount promotional banner dynamic.
+- [x] Make testimonials dynamic.
+- [x] Make the latest news/articles block dynamic.
+- [x] Make the app download promotion dynamic.
+- [x] Add models, migrations, admin management, active status, image uploads, and sort order where appropriate.
 
 ## Priority 5 — Blog/news system
 
-- [ ] Create posts, categories, and tags.
-- [ ] Add authors, featured images, excerpts, and publish dates.
-- [ ] Add draft/published status.
-- [ ] Make the news listing dynamic and paginated.
-- [ ] Add a news detail route and Blade template.
-- [ ] Implement popular/latest posts.
-- [ ] Implement category and tag filtering.
-- [ ] Make news search work.
-- [ ] Add comments only if required.
-- [ ] Add news management to the admin panel.
+- [x] Create posts, categories, and tags.
+- [x] Add authors, featured images, excerpts, full content, and publish dates.
+- [x] Add draft/published status and scheduled visibility.
+- [x] Make the news listing dynamic and paginated.
+- [x] Add a slug-based news detail route and Blade template.
+- [x] Implement popular/latest posts and view counts.
+- [x] Implement category and tag filtering.
+- [x] Make news search work.
+- [x] Keep comments disabled because they are optional and no moderation workflow is currently required.
+- [x] Add dedicated article, category, and tag management to the admin panel.
 
 ## Priority 6 — Team and testimonials
 
-- [ ] Create a team-member model and admin CRUD.
-- [ ] Convert team templates from `.html` to Blade.
-- [ ] Add team listing and detail routes.
-- [ ] Replace hardcoded homepage and About-page team members.
-- [ ] Create a testimonial model and admin CRUD.
-- [ ] Load approved testimonials dynamically.
+- [x] Create and extend the team-member model with admin CRUD, bios, contact details, experience, social links, ordering, and active status.
+- [x] Convert team listing/detail templates from static `.html` designs to dynamic Blade pages.
+- [x] Add paginated team listing and slug-based detail routes.
+- [x] Replace hardcoded homepage and About-page team members.
+- [x] Create a testimonial model and admin CRUD.
+- [x] Load only active, approved testimonials dynamically.
 
 ## Priority 7 — Contact, newsletter, and search
 
-- [ ] Fix the contact URL typo: `/conatct-us` should be `/contact-us`.
-- [ ] Replace the external template contact action with a Laravel endpoint.
-- [ ] Validate and save contact messages.
-- [ ] Add spam protection and rate limiting.
-- [ ] Add an admin inbox with read/replied states.
-- [ ] Send contact notification emails.
-- [ ] Make the off-canvas appointment form functional.
-- [ ] Create newsletter subscriber storage.
-- [ ] Connect the footer newsletter form.
-- [ ] Add unsubscribe support.
-- [ ] Implement the global search overlay.
-- [ ] Search tours, destinations, and articles.
+- [x] Fix the contact URL typo with `/contact-us` and retain a permanent redirect from `/conatct-us`.
+- [x] Replace the external template contact action with a Laravel endpoint.
+- [x] Validate and save contact messages with request metadata.
+- [x] Add honeypot spam protection and rate limiting.
+- [x] Add an admin inbox with new/read/replied states, filtering, email reply links, and deletion.
+- [x] Send contact notification emails to the configured contact address.
+- [x] Make the off-canvas appointment form functional.
+- [x] Create newsletter subscriber storage with resubscription support.
+- [x] Connect the footer newsletter form.
+- [x] Add token-based unsubscribe support.
+- [x] Implement the global search overlay and results page.
+- [x] Search active tours, active destinations, and published articles.
 
 ## Priority 8 — Header, footer, and general settings
 
-- [ ] Create general website settings.
-- [ ] Manage site name, logos, and favicon.
-- [ ] Manage phone number, email, and address.
-- [ ] Manage social-media URLs.
-- [ ] Manage header and footer buttons.
-- [ ] Manage footer link groups and gallery.
-- [ ] Manage copyright text.
-- [ ] Remove remaining “Travil” demo branding.
-- [ ] Make currency selection functional.
-- [ ] Make language selection functional, or remove it until supported.
-- [ ] Make navigation active states route-aware.
-- [ ] Replace broken admin template links such as Widgets, Profile, and Settings.
+  - [x] Create general website settings.
+  - [x] Manage site name, logos, and favicon.
+  - [x] Manage phone number, email, and address.
+  - [x] Manage social-media URLs.
+  - [x] Manage header and footer buttons.
+  - [x] Manage footer link groups and gallery.
+  - [x] Manage copyright text.
+  - [x] Remove remaining “Travil” demo branding.
+  - [x] Make currency selection functional.
+  - [x] Make language selection functional, or remove it until supported.
+  - [x] Make navigation active states route-aware.
+  - [x] Replace broken admin template links such as Widgets, Profile, and Settings.
 
 ## Priority 9 — About and other content pages
 

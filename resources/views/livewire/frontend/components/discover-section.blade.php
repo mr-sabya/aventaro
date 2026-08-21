@@ -27,8 +27,8 @@
                                         <div class="tour-card-item">
                                             <div class="tour-image"><img src="{{ Storage::url($tour->thumbnail_image) }}" alt="{{ $tour->title }}"></div>
                                             <div class="tour-content">
-                                                <h6>From <span>${{ number_format((float) $tour->price, 2) }}</span>
-                                                    @if ($tour->old_price)<del>${{ number_format((float) $tour->old_price, 2) }}</del>@endif
+                                                <h6>From <span>{{ \App\Support\Money::format($tour->price) }}</span>
+                                                    @if ($tour->old_price)<del>{{ \App\Support\Money::format($tour->old_price) }}</del>@endif
                                                 </h6>
                                                 <h4><a href="{{ route('tour.show', $tour) }}">{{ $tour->title }}</a></h4>
                                                 <ul class="list">

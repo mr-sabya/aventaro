@@ -1,6 +1,6 @@
 <nav>
     <div class="app-logo">
-        <a class="logo d-inline-block" href="index.html">
+        <a class="logo d-inline-block" href="{{ route('admin.dashboard') }}">
             <img alt="#" src="{{ url('assets/backend/images/logo/1.png') }}">
         </a>
 
@@ -14,8 +14,8 @@
                 <span class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
             </span>
             <div class="flex-grow-1 ps-2">
-                <h6 class="text-primary mb-0"> Ninfa Monaldo</h6>
-                <p class="text-muted f-s-12 mb-0">Web Developer</p>
+                <h6 class="text-primary mb-0">{{ auth()->user()?->name ?: 'Administrator' }}</h6>
+                <p class="text-muted f-s-12 mb-0">Administrator</p>
             </div>
 
 
@@ -26,12 +26,12 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li class="dropdown-item">
-                        <a class="f-w-500" href="./profile.html" target="_blank">
+                        <a class="f-w-500" href="{{ route('admin.dashboard') }}">
                             <i class="ph-duotone  ph-user-circle pe-1 f-s-20"></i> Profile Details
                         </a>
                     </li>
                     <li class="dropdown-item">
-                        <a class="f-w-500" href="./setting.html" target="_blank">
+                        <a class="f-w-500" href="{{ route('admin.site-settings.index') }}">
                             <i class="ph-duotone  ph-gear pe-1 f-s-20"></i> Settings
                         </a>
                     </li>
@@ -100,6 +100,7 @@
                     <li><a href="{{ route('admin.website.feature-section.index') }}" wire:navigate>Feature Section</a></li>
                     <!-- discover section -->
                     <li><a href="{{ route('admin.website.discover-section.index') }}" wire:navigate>Discover Section</a></li>
+                    <li><a href="{{ route('admin.homepage-content.index') }}">Homepage Content</a></li>
                 </ul>
             </li>
             <li>
@@ -126,6 +127,7 @@
                 <ul class="collapse" id="settings">
                     <li><a href="{{ route('admin.settings.currency.index') }}" wire:navigate>Currency</a></li>
                     <li><a href="{{ route('admin.settings.language.index') }}" wire:navigate>Language</a></li>
+                    <li><a href="{{ route('admin.site-settings.index') }}">General, Header & Footer</a></li>
                 </ul>
             </li>
 
@@ -146,6 +148,8 @@
             <!-- tours -->
             <li class="no-sub"><a href="{{ route('admin.bookings.index') }}" wire:navigate><svg stroke="currentColor" stroke-width="1.5"><use xlink:href="{{ url('assets/backend/svg/_sprite.svg#stack') }}"></use></svg>Bookings</a></li>
             <li class="no-sub"><a href="{{ route('admin.coupons.index') }}" wire:navigate><svg stroke="currentColor" stroke-width="1.5"><use xlink:href="{{ url('assets/backend/svg/_sprite.svg#stack') }}"></use></svg>Coupons</a></li>
+            <li class="no-sub"><a href="{{ route('admin.news.index') }}"><svg stroke="currentColor" stroke-width="1.5"><use xlink:href="{{ url('assets/backend/svg/_sprite.svg#stack') }}"></use></svg>Blog & News</a></li>
+            <li class="no-sub"><a href="{{ route('admin.contact.index') }}" wire:navigate><svg stroke="currentColor" stroke-width="1.5"><use xlink:href="{{ url('assets/backend/svg/_sprite.svg#stack') }}"></use></svg>Contact Inbox</a></li>
 
             <li>
                 <a aria-expanded="false" data-bs-toggle="collapse" href="#tours">
@@ -162,11 +166,11 @@
             </li>
 
             <li class="no-sub">
-                <a href="widget.html">
+                <a href="{{ route('admin.dashboard') }}">
                     <svg stroke="currentColor" stroke-width="1.5">
                         <use xlink:href="{{ url('assets/backend/svg/_sprite.svg#squares') }}"></use>
                     </svg>
-                    Widgets
+                    Dashboard widgets
                 </a>
             </li>
 

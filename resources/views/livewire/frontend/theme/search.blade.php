@@ -5,8 +5,8 @@
             <div class="col-lg-12">
                 <div class="search-bar">
                     <div class="contact-form-box contact-search-form-box">
-                        <form action="#">
-                            <input type="email" placeholder="Search here...">
+                        <form action="{{route('search')}}" method="GET">
+                            <input type="search" name="q" minlength="2" placeholder="Search tours, destinations, and articles..." required>
                             <button type="submit"><i class="far fa-search"></i></button>
                         </form>
                         <p>Type above and press Enter to search. Press Close to cancel.</p>

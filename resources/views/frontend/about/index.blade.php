@@ -16,10 +16,10 @@
                     <i class="far fa-slash"></i>
                 </li>
                 <li>
-                    About Travil
+                    About Aventaro
                 </li>
             </ul>
-            <h1 class="wow fadeInUp" data-wow-delay=".5s">About Travil</h1>
+            <h1 class="wow fadeInUp" data-wow-delay=".5s">About Aventaro</h1>
         </div>
     </div>
     <div class="plane-shape float-bob-x">
@@ -409,7 +409,7 @@
                 <div class="col-lg-6">
                     <div class="about-content">
                         <div class="section-title">
-                            <span class="wow fadeInUp">About Travil Agency</span>
+                            <span class="wow fadeInUp">About Aventaro</span>
                             <h2 class="wow fadeInUp" data-wow-delay=".3s">
                                 Our Journey Memorable <br>
                                 Adventures Worldwide
@@ -447,7 +447,7 @@
                             </div>
                         </div>
                         <a href="about.html" class="theme-btn wow fadeInUp" data-wow-delay=".3s">
-                            <span>More About Travil</span> <i class="far fa-long-arrow-right"></i>
+                            <span>More About Aventaro</span> <i class="far fa-long-arrow-right"></i>
                         </a>
                     </div>
                 </div>
@@ -500,6 +500,8 @@
 </div>
 
 <!-- Team Section Start -->
+<livewire:frontend.components.team-section :limit="4" />
+@if (false)
 <section class="team-section fix section-padding section-bg">
     <div class="plane-shape float-bob-y">
         <img src="{{ url('assets/frontend/img/team/plane-shape.png') }}" alt="img">
@@ -591,6 +593,7 @@
         </div>
     </div>
 </section>
+@endif
 
 <!-- Cta App Section Start -->
 <section class="cta-app-section fix section-padding section-bg pt-0">

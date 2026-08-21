@@ -8,7 +8,7 @@
         <div class="page-heading">
             <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".3s">
                 <li>
-                    <a href="index.html">
+                    <a href="{{ route('home') }}">
                         Home
                     </a>
                 </li>
@@ -103,7 +103,8 @@
                                 <div class="content">
                                     <span>Send Email</span>
                                     <h3>
-                                        <a href="https://modinatheme.com/cdn-cgi/l/email-protection#026a676e6e6d7177726d7076767063746b6e42656f636b6e2c616d6f"><span class="__cf_email__" data-cfemail="5e363b3232312d2b2e312c2a2a2c3f2837321e39333f3732703d3133">[email&#160;protected]</span></a>
+                                        @php($contactEmail = \App\Models\SiteSetting::query()->value('email'))
+                                        <a href="mailto:{{ $contactEmail ?: 'hello@example.com' }}">{{ $contactEmail ?: 'hello@example.com' }}</a>
                                     </h3>
                                 </div>
                             </div>
@@ -116,28 +117,38 @@
                         <p class="wow fadeInUp" data-wow-delay=".5s">
                             We offer carefully curated destinations and tours that capture the true essence of location, ensuring you experience.
                         </p>
-                        <form action="https://modinatheme.com/html/travil/contact.php" id="contact-form1" method="POST" class="contact-form-items">
+                        @if(session('contact_success'))<div class="alert alert-success">{{session('contact_success')}}</div>@endif
+                        <form action="{{ route('contact.store') }}" id="contact-form1" method="POST" class="contact-form-items">
+                            @csrf
+                            <input type="hidden" name="type" value="contact">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
                             <div class="row g-4">
                                 <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
                                     <div class="form-clt">
-                                        <input type="text" name="name" id="email11" placeholder="Enter email">
+                                        <input type="email" name="email" value="{{old('email')}}" id="email11" placeholder="Enter email" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 wow fadeInUp" data-wow-delay=".7s">
                                     <div class="form-clt">
-                                        <input type="text" name="name" id="name22" placeholder="Phone Number">
+                                        <input type="text" name="phone" value="{{old('phone')}}" id="name22" placeholder="Phone Number">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 wow fadeInUp" data-wow-delay=".5s">
                                     <div class="form-clt">
-                                        <input type="text" name="name" id="name331" placeholder="Enter name">
+                                        <input type="text" name="name" value="{{old('name')}}" id="name331" placeholder="Enter name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 wow fadeInUp" data-wow-delay=".9s">
                                     <div class="form-clt">
-                                        <textarea name="message" id="message1" placeholder="Enter message..."></textarea>
+                                        <input type="text" name="subject" value="{{old('subject')}}" placeholder="Subject">
                                     </div>
                                 </div>
+                                <div class="col-lg-12">
+                                    <div class="form-clt">
+                                        <textarea name="message" id="message1" placeholder="Enter message..." required>{{old('message')}}</textarea>
+                                    </div>
+                                </div>
+                                @if($errors->any())<div class="col-12"><div class="alert alert-danger">{{ $errors->first() }}</div></div>@endif
                                 <div class="col-lg-12 wow fadeInUp" data-wow-delay=".3s">
                                     <button type="submit" class="theme-btn">
                                         <span>Send Message</span> <i class="far fa-long-arrow-right"></i>

@@ -1,0 +1,1 @@
+<h1>New {{ucfirst($contactMessage->type)}} message</h1><p><strong>Name:</strong> {{$contactMessage->name}}<br><strong>Email:</strong> {{$contactMessage->email}}<br><strong>Phone:</strong> {{$contactMessage->phone?:'—'}}<br><strong>Subject:</strong> {{$contactMessage->subject?:'—'}}</p><p>{!!nl2br(e($contactMessage->message))!!}</p>

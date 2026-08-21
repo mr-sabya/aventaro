@@ -13,7 +13,7 @@ class CurrencyManager extends Component
     protected $paginationTheme = 'bootstrap';
 
     // Model Properties
-    public $name, $code, $symbol, $currencyId;
+    public $name, $code, $symbol, $exchange_rate = 1, $is_active = true, $currencyId;
 
     // Table State
     public $search = '';
@@ -37,6 +37,8 @@ class CurrencyManager extends Component
     public function resetFields()
     {
         $this->reset(['name', 'code', 'symbol', 'currencyId', 'isEditMode']);
+        $this->exchange_rate = 1;
+        $this->is_active = true;
         $this->resetValidation();
     }
 
@@ -48,6 +50,8 @@ class CurrencyManager extends Component
         $this->name = $currency->name;
         $this->code = $currency->code;
         $this->symbol = $currency->symbol;
+        $this->exchange_rate = $currency->exchange_rate;
+        $this->is_active = $currency->is_active;
 
         $this->dispatch('show-modal');
     }
@@ -58,6 +62,8 @@ class CurrencyManager extends Component
             'name' => 'required|string|max:100',
             'code' => 'required|string|max:10|unique:currencies,code,' . $this->currencyId,
             'symbol' => 'required|string|max:10',
+            'exchange_rate' => 'required|numeric|min:0.000001',
+            'is_active' => 'boolean',
         ]);
 
         Currency::updateOrCreate(['id' => $this->currencyId], $validatedData);

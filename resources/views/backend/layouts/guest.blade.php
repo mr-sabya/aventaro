@@ -50,7 +50,7 @@
                         <div class="col-12 p-0">
                             <div class="login-form-container">
                                 <div class="mb-4">
-                                    <a class="logo" href="index.html">
+                                    <a class="logo" href="{{ route('admin.login') }}">
                                         <img alt="#" src="{{ url('assets/backend/images/logo/3.png') }}" class="">
                                     </a>
                                 </div>

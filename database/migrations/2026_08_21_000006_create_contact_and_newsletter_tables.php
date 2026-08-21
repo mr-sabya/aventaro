@@ -1,0 +1,5 @@
+<?php
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+return new class extends Migration { public function up():void { Schema::create('contact_messages',function(Blueprint $t){$t->id();$t->enum('type',['contact','appointment'])->default('contact')->index();$t->string('name');$t->string('email');$t->string('phone',40)->nullable();$t->string('subject')->nullable();$t->text('message');$t->enum('status',['new','read','replied'])->default('new')->index();$t->string('ip_address',45)->nullable();$t->text('user_agent')->nullable();$t->timestamp('read_at')->nullable();$t->timestamp('replied_at')->nullable();$t->timestamps();}); Schema::create('newsletter_subscribers',function(Blueprint $t){$t->id();$t->string('email')->unique();$t->string('unsubscribe_token',64)->unique();$t->boolean('is_active')->default(true)->index();$t->timestamp('subscribed_at');$t->timestamp('unsubscribed_at')->nullable();$t->timestamps();}); } public function down():void {Schema::dropIfExists('newsletter_subscribers');Schema::dropIfExists('contact_messages');} };

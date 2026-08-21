@@ -51,7 +51,7 @@
                             <th style="cursor:pointer" wire:click="sortBy('code')">
                                 Code <span class="ms-1 text-muted small">{{ $sortField === 'code' ? ($sortDirection === 'asc' ? '▲' : '▼') : '↕' }}</span>
                             </th>
-                            <th>Symbol</th>
+                            <th>Symbol</th><th>Rate</th><th>Status</th>
                             <th class="text-end">Actions</th>
                         </tr>
                     </thead>
@@ -62,6 +62,7 @@
                             <td><span class="fw-bold text-dark">{{ $currency->name }}</span></td>
                             <td><span class="badge bg-light text-primary border">{{ $currency->code }}</span></td>
                             <td><span class="h5 mb-0 text-secondary">{{ $currency->symbol }}</span></td>
+                            <td>{{ number_format($currency->exchange_rate, 6) }}</td><td><span class="badge {{ $currency->is_active ? 'bg-success' : 'bg-secondary' }}">{{ $currency->is_active ? 'Active' : 'Inactive' }}</span></td>
                             <td class="text-end">
                                 <div class="btn-group shadow-sm">
                                     <button wire:click="edit({{ $currency->id }})" class="btn btn-sm btn-outline-primary" title="Edit">
@@ -116,6 +117,8 @@
                                 <input type="text" wire:model="symbol" class="form-control @error('symbol') is-invalid @enderror" placeholder="e.g. $">
                                 @error('symbol') <div class="invalid-feedback">{{ $message }}</div> @enderror
                             </div>
+                            <div class="col-md-6"><label class="form-label fw-semibold">Exchange rate from base price</label><input type="number" step="0.000001" wire:model="exchange_rate" class="form-control @error('exchange_rate') is-invalid @enderror">@error('exchange_rate')<div class="invalid-feedback">{{ $message }}</div>@enderror</div>
+                            <div class="col-md-6 d-flex align-items-end"><div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" wire:model="is_active" id="currency-active"><label class="form-check-label" for="currency-active">Available to visitors</label></div></div>
                         </div>
                     </div>
                     <div class="modal-footer border-top-0">
