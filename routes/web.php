@@ -26,6 +26,9 @@ Route::get('/destinations/{destination}', [DestinationController::class, 'show']
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{post}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/about-us', [PageController::class, 'aboutPage'])->name('pages.about');
+Route::get('/faq', [PageController::class, 'faq'])->name('pages.faq');
+Route::get('/privacy-policy', [PageController::class, 'show'])->defaults('slug', 'privacy-policy')->name('pages.privacy');
+Route::get('/terms-and-conditions', [PageController::class, 'show'])->defaults('slug', 'terms')->name('pages.terms');
 Route::get('/team', [TeamController::class, 'index'])->name('team.index');
 Route::get('/team/{member}', [TeamController::class, 'show'])->name('team.show');
 Route::get('/contact-us', [PageController::class, 'contactPage'])->name('pages.contact');

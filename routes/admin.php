@@ -74,6 +74,9 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::delete('/news-taxonomy/{type}/{id}', [App\Http\Controllers\Backend\NewsController::class, 'deleteTaxonomy'])->name('news.taxonomy.delete');
     Route::get('/contact-inbox', [App\Http\Controllers\Backend\ContactController::class, 'index'])->name('contact.index');
     Route::get('/site-settings', [App\Http\Controllers\Backend\SiteSettingController::class, 'index'])->name('site-settings.index');
+    Route::get('/content-pages', [App\Http\Controllers\Backend\ContentPageController::class, 'index'])->name('content-pages.index');
+    Route::get('/content-pages/{page}/edit', [App\Http\Controllers\Backend\ContentPageController::class, 'edit'])->name('content-pages.edit');
+    Route::put('/content-pages/{page}', [App\Http\Controllers\Backend\ContentPageController::class, 'update'])->name('content-pages.update');
     Route::put('/site-settings', [App\Http\Controllers\Backend\SiteSettingController::class, 'update'])->name('site-settings.update');
     Route::post('/footer-links/{link?}', [App\Http\Controllers\Backend\SiteSettingController::class, 'saveLink'])->name('footer-links.save');
     Route::delete('/footer-links/{link}', [App\Http\Controllers\Backend\SiteSettingController::class, 'deleteLink'])->name('footer-links.delete');

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @php($siteSettings = \App\Models\SiteSetting::query()->first())
     <meta name="author" content="{{ $siteSettings?->site_name ?: 'Aventaro' }}">
-    <meta name="description" content="{{ $siteSettings?->tagline ?: 'Travel and tour booking' }}">
+    <meta name="description" content="@yield('meta_description', $siteSettings?->tagline ?: 'Travel and tour booking')">
     <!-- ======== Page title ============ -->
     <title>@yield('title', $siteSettings?->site_name ?: 'Aventaro')</title>
     <!--<< Favicon >>-->

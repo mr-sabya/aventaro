@@ -101,6 +101,7 @@
                     <!-- discover section -->
                     <li><a href="{{ route('admin.website.discover-section.index') }}" wire:navigate>Discover Section</a></li>
                     <li><a href="{{ route('admin.homepage-content.index') }}">Homepage Content</a></li>
+                    <li><a href="{{ route('admin.content-pages.index') }}">Content Pages</a></li>
                 </ul>
             </li>
             <li>

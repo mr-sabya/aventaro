@@ -128,15 +128,15 @@ These homepage sections are currently hardcoded:
 
 ## Priority 9 — About and other content pages
 
-- [ ] Create editable About-page sections.
-- [ ] Make promise/benefit blocks dynamic.
-- [ ] Make counters and statistics dynamic.
-- [ ] Make the destination carousel dynamic.
-- [ ] Make team, app promotion, and latest-news blocks dynamic.
-- [ ] Create reusable page and breadcrumb settings.
-- [ ] Convert the FAQ template into a working Blade route.
-- [ ] Create Privacy Policy and Terms pages.
-- [ ] Implement the custom 404 page through Laravel.
+  - [x] Create editable About-page sections.
+  - [x] Make promise/benefit blocks dynamic.
+  - [x] Make counters and statistics dynamic.
+  - [x] Make the destination carousel dynamic.
+  - [x] Make team, app promotion, and latest-news blocks dynamic.
+  - [x] Create reusable page and breadcrumb settings.
+  - [x] Convert the FAQ template into a working Blade route.
+  - [x] Create Privacy Policy and Terms pages.
+  - [x] Implement the custom 404 page through Laravel.
 
 ## Priority 10 — Shop templates
 
@@ -144,13 +144,13 @@ Shop, cart, checkout, and product templates exist, but they are un-routed static
 
 Choose one direction:
 
-- [ ] Remove shop templates and assets if e-commerce is outside the project scope.
+- [x] Remove shop templates and assets because e-commerce is outside the current project scope.
 
 Or:
 
-- [ ] Build products, categories, inventory, cart, checkout, orders, coupons, and payments.
-- [ ] Convert all shop `.html` templates to Blade.
-- [ ] Add customer order history and admin order management.
+- [x] Not applicable — product commerce was intentionally excluded in favor of the removal option above.
+- [x] Not applicable — the unused static shop templates were removed instead of converted.
+- [x] Not applicable — customer product orders and shop administration are outside the selected scope.
 
 ## Priority 11 — SEO, reliability, and security
 
