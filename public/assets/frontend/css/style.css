@@ -186,3 +186,34 @@ Main Style file-> assets/css/main.css
         max-height: 360px;
     }
 }
+.livewire-theme-pagination {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.page-nav-wrap .livewire-theme-pagination .page-numbers {
+    padding: 0;
+    border: 0;
+    text-align: center;
+    color: var(--header);
+    cursor: pointer;
+}
+
+.page-nav-wrap .livewire-theme-pagination .page-numbers.current,
+.page-nav-wrap .livewire-theme-pagination .page-numbers:hover {
+    color: var(--white);
+}
+
+.page-nav-wrap .livewire-theme-pagination .page-numbers.disabled,
+.page-nav-wrap .livewire-theme-pagination .page-numbers.dots,
+.page-nav-wrap .livewire-theme-pagination button:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+.page-nav-wrap .livewire-theme-pagination .page-numbers.dots:hover,
+.page-nav-wrap .livewire-theme-pagination .page-numbers.disabled:hover {
+    color: var(--header);
+    background: #f6f6f6;
+}

@@ -71,5 +71,9 @@
             <div class="col-12 text-center py-5"><h3>No tours found</h3><p>Try changing or clearing your filters.</p></div>
         @endforelse
     </div>
-    @if ($tours->hasPages())<div class="mt-5">{{ $tours->links() }}</div>@endif
+    @if ($tours->hasPages())
+        <div class="mt-5">
+            {{ $tours->links('livewire.frontend.pagination', ['scrollTo' => '.tour-catalog-grid']) }}
+        </div>
+    @endif
 </div>
