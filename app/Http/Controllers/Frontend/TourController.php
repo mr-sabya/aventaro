@@ -3,57 +3,15 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Destination;
 use App\Models\Tour;
 use Illuminate\Http\Request;
 
 class TourController extends Controller
 {
     //
-    public function index(Request $request)
+    public function index()
     {
-        $filters = $request->validate([
-            'search' => ['nullable', 'string', 'max:100'],
-            'destination' => ['nullable', 'string', 'max:255'],
-            'activity' => ['nullable', 'string', 'max:100'],
-            'date' => ['nullable', 'date'],
-            'guests' => ['nullable', 'integer', 'min:1', 'max:50'],
-            'min_price' => ['nullable', 'numeric', 'min:0'],
-            'max_price' => ['nullable', 'numeric', 'min:0'],
-            'duration' => ['nullable', 'string', 'max:100'],
-        ]);
-
-        $tours = Tour::query()
-            ->with('city.country')
-            ->where('is_active', true)
-            ->when($filters['search'] ?? null, fn ($query, $search) => $query
-                ->where(fn ($q) => $q->where('title', 'like', "%{$search}%")
-                    ->orWhere('description', 'like', "%{$search}%")
-                    ->orWhere('address', 'like', "%{$search}%")))
-            ->when($filters['destination'] ?? null, fn ($query, $destination) => $query
-                ->whereHas('city', fn ($q) => $q->where('id', $destination)
-                    ->orWhere('name', 'like', "%{$destination}%")
-                    ->orWhereHas('country', fn ($country) => $country->where('name', 'like', "%{$destination}%"))))
-            ->when($filters['activity'] ?? null, fn ($query, $activity) => $query
-                ->where(fn ($q) => $q->where('title', 'like', "%{$activity}%")
-                    ->orWhere('description', 'like', "%{$activity}%")
-                    ->orWhere('features', 'like', "%{$activity}%")))
-            ->when($filters['date'] ?? null, fn ($query, $date) => $query
-                ->where(fn ($q) => $q->whereNull('available_from')->orWhereDate('available_from', '<=', $date))
-                ->where(fn ($q) => $q->whereNull('available_to')->orWhereDate('available_to', '>=', $date)))
-            ->when($filters['guests'] ?? null, fn ($query, $guests) => $query
-                ->where('capacity_per_date', '>=', $guests))
-            ->when($filters['min_price'] ?? null, fn ($query, $price) => $query->where('price', '>=', $price))
-            ->when($filters['max_price'] ?? null, fn ($query, $price) => $query->where('price', '<=', $price))
-            ->when($filters['duration'] ?? null, fn ($query, $duration) => $query->where('duration', 'like', "%{$duration}%"))
-            ->latest()
-            ->paginate(12)
-            ->withQueryString();
-
-        return view('frontend.tour.index', [
-            'tours' => $tours,
-            'destinations' => Destination::query()->where('is_active', true)->orderBy('name')->get(),
-        ]);
+        return view('frontend.tour.index');
     }
 
     public function show(Tour $tour)

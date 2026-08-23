@@ -67,6 +67,51 @@ Main Style file-> assets/css/main.css
     object-fit: cover;
 }
 
+.tour-catalog-grid .tour-box-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.tour-catalog-grid .tour-box-items .thumb,
+.tour-catalog-grid .tour-box-items .thumb a {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.tour-catalog-grid .tour-box-items .thumb img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 312 / 226;
+    object-fit: cover;
+}
+
+.tour-catalog-grid .tour-box-items .content {
+    flex: 1;
+}
+
+.tour-filter-panel {
+    position: relative;
+}
+
+.tour-filter-loading {
+    position: absolute;
+    inset: auto 24px -38px auto;
+    align-items: center;
+    gap: 8px;
+    color: var(--theme-color);
+    font-weight: 700;
+}
+
+.tour-catalog-grid {
+    transition: opacity .2s ease;
+}
+
+.tour-catalog-grid.is-loading {
+    opacity: .45;
+    pointer-events: none;
+}
+
 .tour-card-item .tour-image > img {
     width: 100%;
     aspect-ratio: 424 / 390;
@@ -122,6 +167,4 @@ Main Style file-> assets/css/main.css
         max-height: 360px;
     }
 }
-
-
 

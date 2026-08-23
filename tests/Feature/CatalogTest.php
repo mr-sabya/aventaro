@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Livewire\Frontend\TourCatalog;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Destination;
@@ -9,6 +10,7 @@ use App\Models\DestinationFaq;
 use App\Models\Tour;
 use App\Models\TourReview;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class CatalogTest extends TestCase
@@ -55,6 +57,23 @@ class CatalogTest extends TestCase
             ->assertOk()
             ->assertSeeText($tour->title)
             ->assertSeeText('3 Days');
+    }
+
+    public function test_tour_catalog_filters_results_live(): void
+    {
+        [, $city] = $this->location();
+        $matching = $this->tour($city, ['title' => 'Live Search Adventure']);
+        $this->tour($city, ['title' => 'Different Cultural Journey']);
+
+        Livewire::test(TourCatalog::class)
+            ->assertSee($matching->title)
+            ->set('search', 'Live Search')
+            ->assertSee($matching->title)
+            ->assertDontSee('Different Cultural Journey')
+            ->set('maxPrice', '100')
+            ->assertSee('No tours found')
+            ->call('clearFilters')
+            ->assertSee('Different Cultural Journey');
     }
 
     public function test_review_submission_is_pending_until_approved(): void
