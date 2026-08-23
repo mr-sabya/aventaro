@@ -11,7 +11,7 @@
                         <div class="hero-items">
                             <div class="plane-shape"><img src="{{ asset('assets/frontend/img/hero/new/plane-2.png') }}" alt=""></div>
                             <div class="plane-shape-2"><img src="{{ asset('assets/frontend/img/hero/new/plane-3.png') }}" alt=""></div>
-                            <div class="hero-bg bg-cover" style="background-image: url('{{ Storage::url($slide->background_image) }}');"></div>
+                            <div class="hero-bg bg-cover" style="background-image: url('{{ \App\Support\Media::url($slide->background_image, 'assets/frontend/img/hero/04.jpg') }}');"></div>
                             <div class="container">
                                 <div class="row g-4">
                                     <div class="col-lg-12">
@@ -19,7 +19,7 @@
                                             @if ($slide->subtitle)<h6 data-animation="fadeInUp" data-delay="1.3s">{{ $slide->subtitle }}</h6>@endif
                                             <h1 data-animation="fadeInUp" data-delay="1.5s">
                                                 <span class="shape-text">{{ $slide->title_part_1 }}</span>
-                                                <span>{{ $slide->title_part_2 }}</span><br>{{ $slide->title_part_3 }}
+                                                <span>{{ $slide->title_part_2 }}</span> <br> {{ $slide->title_part_3 }}
                                             </h1>
                                             @if ($slide->description)<p data-animation="fadeInUp" data-delay="1.7s">{{ $slide->description }}</p>@endif
                                         </div>

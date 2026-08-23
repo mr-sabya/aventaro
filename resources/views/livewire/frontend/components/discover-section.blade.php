@@ -40,6 +40,7 @@
                                     </div>
                                 @endforeach
                             </div></div>
+                            <div class="swiper-dot4 mt-5"><div class="dot"></div></div>
                         @else
                             <div class="text-center text-white py-5">Hot-deal tours will be available soon.</div>
                         @endif

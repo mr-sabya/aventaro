@@ -17,7 +17,7 @@
                         <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" wire:key="trending-destination-{{ $destination->id }}">
                             <div class="trending-destinations-card-items">
                                 <div class="destinations-img">
-                                    <img src="{{ Storage::url($destination->image) }}" alt="{{ $destination->name }}">
+                                    <img src="{{ \App\Support\Media::url($destination->image) }}" alt="{{ $destination->image_alt ?: $destination->name }}">
                                     <div class="icon"><a href="{{ route('destination.show', $destination) }}" aria-label="View {{ $destination->name }}"><i class="fas fa-arrow-right"></i></a></div>
                                     <ul class="destinations-content"><li class="title"><a href="{{ route('destination.show', $destination) }}">
                                         {{ $destination->name }}@if ($destination->city?->country), {{ $destination->city->country->name }}@endif

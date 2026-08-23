@@ -8,9 +8,9 @@
                     @foreach ($partners as $partner)
                         <div class="swiper-slide" wire:key="partner-{{ $partner->id }}"><div class="brand-img text-center">
                             @if ($partner->url)
-                                <a href="{{ $partner->url }}" target="_blank" rel="noopener noreferrer"><img src="{{ Storage::url($partner->image) }}" alt="{{ $partner->name }}"></a>
+                                <a href="{{ $partner->url }}" target="_blank" rel="noopener noreferrer"><img src="{{ \App\Support\Media::url($partner->image) }}" alt="{{ $partner->name }}"></a>
                             @else
-                                <img src="{{ Storage::url($partner->image) }}" alt="{{ $partner->name }}">
+                                <img src="{{ \App\Support\Media::url($partner->image) }}" alt="{{ $partner->name }}">
                             @endif
                         </div></div>
                     @endforeach
