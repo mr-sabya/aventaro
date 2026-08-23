@@ -63,9 +63,6 @@
     <!-- Header Section Start -->
     <livewire:frontend.theme.header />
 
-    <!-- Search Section Start -->
-    <livewire:frontend.theme.search />
-
     @yield('content')
 
     <!-- Footer Section Start -->
