@@ -43,14 +43,64 @@
     @endif
 
     <div class="container">
-        <div class="booking-list-area">
-            <form action="{{ route('tour.index') }}" method="GET" class="booking-list">
-                <div class="booking-list-item">
-                    <div class="icon"><i class="far fa-search"></i></div>
-                    <div class="content"><h5>Find a tour</h5><input type="search" name="search" placeholder="Where do you want to go?"></div>
+        <form action="{{ route('tour.index') }}" method="GET" class="booking-list-area-1" aria-label="Find your tour">
+            <div class="booking-list">
+                <div class="icon"><img src="{{ asset('assets/frontend/img/hero/location.png') }}" alt=""></div>
+                <div class="content">
+                    <h5><label for="home-destination">Destination</label></h5>
+                    <div class="form-clt"><div class="form">
+                        <select id="home-destination" name="destination" class="single-select w-100">
+                            <option value="">Your city or Region</option>
+                            @foreach ($destinations as $destination)
+                                <option value="{{ $destination->city_id }}">{{ $destination->name }}</option>
+                            @endforeach
+                        </select>
+                    </div></div>
                 </div>
-                <button type="submit" class="theme-btn"><span>Search</span> <i class="far fa-long-arrow-right"></i></button>
-            </form>
-        </div>
+            </div>
+            <div class="booking-list">
+                <div class="icon"><img src="{{ asset('assets/frontend/img/hero/location.png') }}" alt=""></div>
+                <div class="content">
+                    <h5><label for="home-activity">All Activity</label></h5>
+                    <div class="form-clt"><div class="form">
+                        <select id="home-activity" name="activity" class="single-select w-100">
+                            <option value="">Choose Activity</option>
+                            <option value="Adventure">Adventure</option>
+                            <option value="Culture">Culture &amp; Heritage</option>
+                            <option value="Food">Food &amp; Cuisine</option>
+                            <option value="Nature">Nature &amp; Wildlife</option>
+                            <option value="City">City Discovery</option>
+                        </select>
+                    </div></div>
+                </div>
+            </div>
+            <div class="booking-list">
+                <div class="icon"><img src="{{ asset('assets/frontend/img/hero/location.png') }}" alt=""></div>
+                <div class="content">
+                    <h5><label for="home-date">Departure Date</label></h5>
+                    <div class="form-clt">
+                        <div id="datepicker" class="input-group date" data-date-format="yyyy-mm-dd">
+                            <input id="home-date" class="form-control" type="text" name="date" placeholder="Choose Date" autocomplete="off">
+                            <span class="input-group-addon" aria-hidden="true"><i class="far fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="booking-list">
+                <div class="icon"><img src="{{ asset('assets/frontend/img/hero/location.png') }}" alt=""></div>
+                <div class="content">
+                    <h5><label for="home-guests">Guest</label></h5>
+                    <div class="form-clt"><div class="form">
+                        <select id="home-guests" name="guests" class="single-select w-100">
+                            <option value="">Your Guest</option>
+                            @foreach (range(1, 10) as $guestCount)
+                                <option value="{{ $guestCount }}">{{ $guestCount }} {{ Str::plural('Guest', $guestCount) }}</option>
+                            @endforeach
+                        </select>
+                    </div></div>
+                </div>
+            </div>
+            <button type="submit" class="theme-btn"><span>Search <i class="far fa-search"></i></span></button>
+        </form>
     </div>
 </section>

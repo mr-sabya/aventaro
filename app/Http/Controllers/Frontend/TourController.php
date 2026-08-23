@@ -15,7 +15,9 @@ class TourController extends Controller
         $filters = $request->validate([
             'search' => ['nullable', 'string', 'max:100'],
             'destination' => ['nullable', 'string', 'max:255'],
+            'activity' => ['nullable', 'string', 'max:100'],
             'date' => ['nullable', 'date'],
+            'guests' => ['nullable', 'integer', 'min:1', 'max:50'],
             'min_price' => ['nullable', 'numeric', 'min:0'],
             'max_price' => ['nullable', 'numeric', 'min:0'],
             'duration' => ['nullable', 'string', 'max:100'],
@@ -32,9 +34,15 @@ class TourController extends Controller
                 ->whereHas('city', fn ($q) => $q->where('id', $destination)
                     ->orWhere('name', 'like', "%{$destination}%")
                     ->orWhereHas('country', fn ($country) => $country->where('name', 'like', "%{$destination}%"))))
+            ->when($filters['activity'] ?? null, fn ($query, $activity) => $query
+                ->where(fn ($q) => $q->where('title', 'like', "%{$activity}%")
+                    ->orWhere('description', 'like', "%{$activity}%")
+                    ->orWhere('features', 'like', "%{$activity}%")))
             ->when($filters['date'] ?? null, fn ($query, $date) => $query
                 ->where(fn ($q) => $q->whereNull('available_from')->orWhereDate('available_from', '<=', $date))
                 ->where(fn ($q) => $q->whereNull('available_to')->orWhereDate('available_to', '>=', $date)))
+            ->when($filters['guests'] ?? null, fn ($query, $guests) => $query
+                ->where('capacity_per_date', '>=', $guests))
             ->when($filters['min_price'] ?? null, fn ($query, $price) => $query->where('price', '>=', $price))
             ->when($filters['max_price'] ?? null, fn ($query, $price) => $query->where('price', '<=', $price))
             ->when($filters['duration'] ?? null, fn ($query, $duration) => $query->where('duration', 'like', "%{$duration}%"))
