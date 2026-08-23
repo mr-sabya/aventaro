@@ -216,8 +216,17 @@ class DemoDataSeeder extends Seeder
 
     private function seedFooter(): void
     {
+        $footerLinks = [
+            ['Useful Links', 'All Destinations', '/destinations'], ['Useful Links', 'Tour Packages', '/tour-packages'],
+            ['Useful Links', 'Travel News', '/news'], ['Useful Links', 'Our Team', '/team'], ['Useful Links', 'Contact Support', '/contact-us'],
+            ['About Aventaro', 'About Us', '/about-us'], ['About Aventaro', 'Frequently Asked Questions', '/faq'],
+            ['About Aventaro', 'Privacy Policy', '/privacy-policy'], ['About Aventaro', 'Terms & Conditions', '/terms-and-conditions'],
+            ['About Aventaro', 'Contact Us', '/contact-us'],
+        ];
+        foreach ($footerLinks as $i => [$group, $label, $url]) {
+            DB::table('footer_links')->updateOrInsert(['group_name' => $group, 'label' => $label], ['url' => $url, 'sort_order' => $i + 1, 'is_active' => true, 'updated_at' => $this->now, 'created_at' => $this->now]);
+        }
         foreach (range(1, 20) as $i) {
-            DB::table('footer_links')->updateOrInsert(['group_name' => $i <= 10 ? 'Explore' : 'Company', 'label' => "Helpful Link {$i}"], ['url' => $i % 2 ? '/tour-packages' : '/destinations', 'sort_order' => $i, 'is_active' => true, 'updated_at' => $this->now, 'created_at' => $this->now]);
             DB::table('footer_galleries')->updateOrInsert(['alt_text' => "Traveller gallery image {$i}"], ['image' => 'demo/tour-'.(($i % 20) + 1).'.jpg', 'url' => '/destinations', 'sort_order' => $i, 'is_active' => true, 'updated_at' => $this->now, 'created_at' => $this->now]);
         }
     }
