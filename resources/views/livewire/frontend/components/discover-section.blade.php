@@ -25,7 +25,7 @@
                                 @foreach ($tours as $tour)
                                     <div class="swiper-slide" wire:key="hot-deal-tour-{{ $tour->id }}">
                                         <div class="tour-card-item">
-                                            <div class="tour-image"><img src="{{ Storage::url($tour->thumbnail_image) }}" alt="{{ $tour->title }}"></div>
+                                            <div class="tour-image"><img src="{{ \App\Support\Media::url($tour->thumbnail_image) }}" alt="{{ $tour->image_alt ?: $tour->title }}"></div>
                                             <div class="tour-content">
                                                 <h6>From <span>{{ \App\Support\Money::format($tour->price) }}</span>
                                                     @if ($tour->old_price)<del>{{ \App\Support\Money::format($tour->old_price) }}</del>@endif

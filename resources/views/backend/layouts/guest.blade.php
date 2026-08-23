@@ -5,15 +5,12 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Multipurpose, super flexible, powerful, clean modern responsive bootstrap 5 admin template"
-        name="description">
-    <meta content="admin template, ki-admin admin template, dashboard template, flat admin template, responsive admin template, web app"
-        name="keywords">
-    <meta content="la-themes" name="author">
+    <meta content="Secure Aventaro administration access" name="description">
+    <meta content="Aventaro" name="author">
     <link href="{{ asset('assets/backend/images/logo/favicon.png') }}" rel="icon" type="image/x-icon">
     <link href="{{ asset('assets/backend/images/logo/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
 
-    <title>Sign In Bg | ki-admin - Premium Admin Template</title>
+    <title>Aventaro Admin</title>
 
     <!--font-awesome-css-->
     <link href="{{ asset('assets/backend/vendor/fontawesome/css/all.css') }}" rel="stylesheet">

@@ -12,7 +12,7 @@
                     @foreach ($tours as $tour)
                         <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" wire:key="featured-tour-{{ $tour->id }}">
                             <div class="tour-box-items">
-                                <div class="thumb"><img src="{{ Storage::url($tour->thumbnail_image) }}" alt="{{ $tour->title }}"></div>
+                                <div class="thumb"><img src="{{ \App\Support\Media::url($tour->thumbnail_image) }}" alt="{{ $tour->image_alt ?: $tour->title }}"></div>
                                 <div class="content">
                                     <span>{{ $tour->city?->country?->name ?? $tour->city?->name ?? 'Tour' }}</span>
                                     <h4><a href="{{ route('tour.show', $tour) }}">{{ $tour->title }}</a></h4>

@@ -26,7 +26,7 @@
             @forelse ($tours as $tour)
                 <div class="col-xl-3 col-lg-6 col-md-6">
                     <div class="tour-box-items mt-0">
-                        <div class="thumb"><a href="{{ route('tour.show', $tour) }}"><img src="{{ Storage::url($tour->thumbnail_image) }}" alt="{{ $tour->title }}"></a></div>
+                        <div class="thumb"><a href="{{ route('tour.show', $tour) }}"><img src="{{ \App\Support\Media::url($tour->thumbnail_image) }}" alt="{{ $tour->image_alt ?: $tour->title }}"></a></div>
                         <div class="content">
                             <span>{{ $tour->city?->country?->name ?? $tour->city?->name }}</span>
                             <h4><a href="{{ route('tour.show', $tour) }}">{{ $tour->title }}</a></h4>
