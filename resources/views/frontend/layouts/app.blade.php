@@ -41,7 +41,7 @@
     <!--<< Main.css >>-->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
     <!--<< Style.css >>-->
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}?v={{ filemtime(public_path('assets/frontend/css/style.css')) }}">
     @livewireStyles
     @stack('structured-data')
 </head>

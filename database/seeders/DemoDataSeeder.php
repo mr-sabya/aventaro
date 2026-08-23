@@ -192,7 +192,7 @@ class DemoDataSeeder extends Seeder
             DB::table('partners')->updateOrInsert(['name' => "Travel Partner {$i}"], ['image' => 'demo/brand-'.(($i % 5) + 1).'.png', 'url' => '#', 'sort_order' => $i, 'is_active' => true, 'updated_at' => $this->now, 'created_at' => $this->now]);
             DB::table('team_members')->updateOrInsert(['slug' => "travel-specialist-{$i}"], ['name' => "Travel Specialist {$i}", 'role' => ['Tour Designer','Local Guide','Destination Expert','Guest Experience Lead'][$i % 4], 'bio' => 'A passionate travel professional who loves turning thoughtful details into seamless, memorable journeys.', 'email' => "guide{$i}@aventaro.test", 'phone' => '+880 1700 '.str_pad((string) $i, 6, '0', STR_PAD_LEFT), 'experience' => (3 + $i).' years', 'image' => 'demo/team-'.(($i % 12) + 1).'.jpg', 'image_alt' => "Travel Specialist {$i}", 'facebook_url' => '#', 'twitter_url' => '#', 'instagram_url' => '#', 'sort_order' => $i, 'is_active' => true, 'updated_at' => $this->now, 'created_at' => $this->now]);
             DB::table('testimonials')->updateOrInsert(['name' => "Happy Traveller {$i}"], ['location' => ['Dhaka','Singapore','London','Toronto'][$i % 4], 'quote' => 'Every detail felt considered. We saw the highlights, found places we would never have discovered alone, and never felt rushed.', 'image' => 'demo/testimonial-'.(($i % 4) + 1).'.png', 'rating' => 5, 'sort_order' => $i, 'is_active' => true, 'is_approved' => true, 'updated_at' => $this->now, 'created_at' => $this->now]);
-            DB::table('travel_categories')->updateOrInsert(['name' => "Travel Style {$i}"], ['icon_image' => 'demo/category-'.(($i % 6) + 1).'.png', 'tour_count' => 4 + $i, 'starting_price' => 249 + ($i * 20), 'url' => '/tour-packages', 'sort_order' => $i, 'is_active' => true, 'updated_at' => $this->now, 'created_at' => $this->now]);
+            DB::table('travel_categories')->updateOrInsert(['name' => "Travel Style {$i}"], ['icon_image' => 'demo/category-'.(($i % 8) + 1).'.svg', 'tour_count' => 4 + $i, 'starting_price' => 249 + ($i * 20), 'url' => '/tour-packages', 'sort_order' => $i, 'is_active' => true, 'updated_at' => $this->now, 'created_at' => $this->now]);
         }
     }
 
@@ -240,7 +240,7 @@ class DemoDataSeeder extends Seeder
         $files = [
             'hero/03.jpg' => 'hero-1.jpg', 'hero/04.jpg' => 'hero-2.jpg', 'hero/05.jpg' => 'hero-3.jpg',
             'about/03.jpg' => 'about.jpg', 'tour/new/bg.jpg' => 'discover.jpg', 'cta/cta-bg-3.jpg' => 'promo.jpg',
-            'footer/bg-image.jpg' => 'app-bg.jpg', 'footer/mobile-app.png' => 'app.png',
+            'cta/cta-apps-bg.jpg' => 'app-bg.jpg', 'cta/mobile-app.png' => 'app.png',
         ];
         foreach ([3, 4, 5] as $i => $source) $files['destinations/'.str_pad((string) $source, 2, '0', STR_PAD_LEFT).'.jpg'] = 'destination-'.($i + 1).'.jpg';
         foreach ([24, 25, 26] as $i => $source) $files['tour/'.str_pad((string) $source, 2, '0', STR_PAD_LEFT).'.jpg'] = 'destination-'.($i + 4).'.jpg';
@@ -253,7 +253,8 @@ class DemoDataSeeder extends Seeder
         $files['news/pp2.jpg'] = 'news-13.jpg';
         foreach (range(1, 5) as $i) $files['brand/'.str_pad((string) $i, 2, '0', STR_PAD_LEFT).'.png'] = "brand-{$i}.png";
         foreach (range(1, 4) as $i) $files['testimonial/client-'.str_pad((string) $i, 2, '0', STR_PAD_LEFT).'.png'] = "testimonial-{$i}.png";
-        foreach (range(1, 6) as $i) $files['destinations/'.str_pad((string) $i, 2, '0', STR_PAD_LEFT).'.png'] = "category-{$i}.png";
+        $categoryIcons = [1 => 'icon-01.svg', 2 => 'icon-02.svg', 3 => 'icon-3.svg', 4 => 'icon-4.svg', 5 => 'icon-5.svg', 6 => 'icon-6.svg', 7 => 'icon-7.svg', 8 => 'icon-8.svg'];
+        foreach ($categoryIcons as $i => $source) $files[$source] = "category-{$i}.svg";
 
         foreach ($files as $source => $target) {
             $sourcePath = public_path('assets/frontend/img/'.$source);
