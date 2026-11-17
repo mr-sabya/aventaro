@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Mail\BookingConfirmation;
 use App\Models\Booking;
 use App\Models\Coupon;
+use App\Models\PaymentGateway;
 use App\Models\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class BookingController extends Controller
@@ -29,7 +31,7 @@ class BookingController extends Controller
             'address' => ['nullable', 'string', 'max:500'],
             'notes' => ['nullable', 'string', 'max:1000'],
             'coupon_code' => ['nullable', 'string', 'max:50'],
-            'payment_method' => ['required', 'in:pay_later,bank_transfer'],
+            'payment_method' => ['required', Rule::in(PaymentGateway::sslcommerz()->isReady() ? ['pay_later', 'bank_transfer', 'sslcommerz'] : ['pay_later', 'bank_transfer'])],
         ]);
 
         $booking = DB::transaction(function () use ($validated, $tour) {
@@ -79,6 +81,11 @@ class BookingController extends Controller
             Mail::to($booking->email)->send(new BookingConfirmation($booking->load('tour')));
         } catch (\Throwable $exception) {
             Log::warning('Booking confirmation email failed.', ['booking' => $booking->reference, 'error' => $exception->getMessage()]);
+        }
+
+        if ($booking->payment_method === 'sslcommerz') {
+            // Straight on to the payment page; the booking page lets the customer retry if they come back.
+            return app(PaymentController::class)->pay($booking);
         }
 
         return redirect()->route('booking.show', $booking)->with('success', 'Your booking has been received.');

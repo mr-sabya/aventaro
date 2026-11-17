@@ -58,7 +58,7 @@
                     <div class="col-12"><label class="form-label">Phone</label><input name="phone" value="{{ old('phone') }}" class="form-control" required></div>
                     <div class="col-12"><label class="form-label">Address</label><textarea name="address" class="form-control" rows="2">{{ old('address') }}</textarea></div>
                     <div class="col-12"><label class="form-label">Coupon</label><input name="coupon_code" value="{{ old('coupon_code') }}" class="form-control @error('coupon_code') is-invalid @enderror" placeholder="Optional">@error('coupon_code')<div class="invalid-feedback">{{ $message }}</div>@enderror</div>
-                    <div class="col-12"><label class="form-label">Payment</label><select name="payment_method" class="form-select"><option value="pay_later">Pay later</option><option value="bank_transfer">Bank transfer</option></select></div>
+                    <div class="col-12"><label class="form-label">Payment</label><select name="payment_method" class="form-select"><option value="pay_later">Pay later</option><option value="bank_transfer">Bank transfer</option>@if(\App\Models\PaymentGateway::sslcommerz()->isReady())<option value="sslcommerz">Pay online (card, bKash, Nagad, banking)</option>@endif</select></div>
                     <div class="col-12"><label class="form-label">Notes</label><textarea name="notes" class="form-control" rows="2">{{ old('notes') }}</textarea></div>
                     <div class="col-12"><button type="submit" class="theme-btn w-100"><span>Request Booking</span></button></div>
                 </form>

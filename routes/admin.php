@@ -66,6 +66,9 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('/bookings', [App\Http\Controllers\Backend\BookingController::class, 'index'])->name('bookings.index');
     Route::get('/bookings/{booking}', [App\Http\Controllers\Backend\BookingController::class, 'show'])->name('bookings.show');
     Route::patch('/bookings/{booking}/notes', [App\Http\Controllers\Backend\BookingController::class, 'updateNotes'])->name('bookings.notes');
+    Route::get('/payments', [App\Http\Controllers\Backend\PaymentSettingController::class, 'edit'])->name('payments.index');
+    Route::put('/payments', [App\Http\Controllers\Backend\PaymentSettingController::class, 'update'])->name('payments.update');
+    Route::delete('/payments', [App\Http\Controllers\Backend\PaymentSettingController::class, 'forget'])->name('payments.forget');
     Route::get('/coupons', [App\Http\Controllers\Backend\BookingController::class, 'coupons'])->name('coupons.index');
     Route::get('/homepage-content', [App\Http\Controllers\Backend\HomeContentController::class, 'index'])->name('homepage-content.index');
     Route::post('/homepage-content/{type}/{id?}', [App\Http\Controllers\Backend\HomeContentController::class, 'save'])->name('homepage-content.save');

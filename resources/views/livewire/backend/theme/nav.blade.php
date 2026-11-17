@@ -128,6 +128,7 @@
                 <ul class="collapse" id="settings">
                     <li><a href="{{ route('admin.settings.currency.index') }}" wire:navigate>Currency</a></li>
                     <li><a href="{{ route('admin.settings.language.index') }}" wire:navigate>Language</a></li>
+                    <li><a href="{{ route('admin.payments.index') }}">Online Payment (SSLCommerz)</a></li>
                     <li><a href="{{ route('admin.site-settings.index') }}">General, Header & Footer</a></li>
                 </ul>
             </li>
